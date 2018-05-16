@@ -1,0 +1,194 @@
+﻿@model IEnumerable<WebsiteMVC.Models.LopHP>
+
+@{
+    ViewBag.Title = "LỚP HỌC PHẦN";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.CanBoQuanLy, WebsiteMVC.Models.eRole.TroLiKhoa);
+
+    var namhoc = ViewBag.NamHocs as SelectList;
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-edit"></i>@ViewBag.Title
+        </div>
+    </div>
+    <div class="portlet-body">
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">NĂM HỌC</span>
+                        @Html.DropDownList("IDNamHoc", namhoc, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+                <input type="submit" name="submit" value="LỌC" class="btn green" />
+                <button type="submit" name="submit" value="Export" class="btn btn-primary">
+                    Export <i class="fa fa-file-excel-o"></i>
+                </button>
+                @if (per)
+                {
+                    if (ViewBag.edit == true)
+                    {
+                        <a href="@Url.Action("Edit")" id="sample_editable_1_new" class="btn btn-primary">
+                            Thêm Lớp học phần <i class="fa fa-plus"></i>
+                        </a>
+                        <a href="@Url.Action("Import",new {IDNamHoc = namhoc.SelectedValue })" class="btn btn-primary">
+                            Import Lớp học phần <i class="fa fa-file-archive-o"></i>
+                        </a>
+                    }
+                    else
+                    {
+                        <span><label class="label label-warning">Năm học đã kết thúc</label></span>
+                    }
+                }
+            </div>
+        }
+        <hr />
+
+        <table class="table table-bordered" id="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>
+                        Tên môn học
+                    </th>
+                    <th>
+                        Số tiết
+                    </th>
+                    <th>LHDT</th>
+                    <th>
+                        Kíp
+                    </th>
+                    <th>
+                        Địa điểm
+                    </th>
+                    <th>HS Kíp</th>
+                    <th>HS LHDT</th>
+                    <th>HS Quân số</th>
+                    <th>HS ĐĐ</th>
+                    <th>Tổng Hệ số</th>
+                    <th>ST quy chuẩn</th>
+                    <th>
+                        Tên lớp
+                    </th>
+                    <th>
+                        Sĩ số
+                    </th>
+                    <th>
+                        Thời gian thi KT
+                    </th>
+                    <th>
+                        Hình thức thi
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr style="background-color: @(item.PCGDs.Count > 0 ?"#74aed6":"none")">
+                        <td>
+                            <span onclick="LoadPCGD('@item.MaHP')" class="btn btn-primary"><i class="fa fa-info"></i> Xem PCGD</span>
+                            @if (per && ViewBag.edit == true)
+                            {
+                                <a href="@Url.Action("Edit",new { MaHP = item.MaHP})" class="btn btn-primary"><i class="fa fa-pencil"></i> </a>
+                                <span onclick="delete_object(this,'@item.MaHP')" class="btn btn-warning"><i class="fa fa-trash-o"></i> </span>
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MonHoc.TenMonHoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SoTietTKB)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LHDT)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Kip)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DiaDiem)
+                        </td>
+                        <td>@Html.DisplayFor(modelItem => item.HeSoKip)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HeSoLHDT)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HeSoQS)</td>
+                        <td>@Html.DisplayFor(modelItem => item.HeSoDD)</td>
+                        <td>@Html.DisplayFor(modelItem => item.TongHeSo)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SoTietQuyChuan)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenLop)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SiSo)
+                        </td>
+                        <td>
+                            @(item.TGTHIKT?.ToString("dd-MM-yyyy"))
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HinhThucThi)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <hr />
+        @Html.Action("DMG_GV", "PCGD", new { IDNamHoc = (int)namhoc.SelectedValue })
+
+        <hr />
+        <div>
+            <h2>PHÂN CÔNG GIẢNG DẠY</h2>
+            <div id="result-pcgd">
+                *** Click Xem PCGD để xem chi tiết phần công giảng dạy
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section css{
+    <link href="/Content/theme/assets/global/plugins/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+@section js{
+    <script type="text/javascript" src="/Content/theme/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/Content/theme/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+
+    <script>
+        $("#table").DataTable();
+
+        function delete_object(target, id) {
+            if (confirm("Bạn có muốn xóa không?")) {
+                $.ajax({
+                    url: "@Url.Action("Delete")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (d) {
+                        if (d) {
+                            $(target).closest("tr").remove();
+                        } else {
+                            alert("Xóa thất bại");
+                        }
+                    }
+                })
+            }
+        }
+
+        function LoadPCGD(MaHP) {
+             $.ajax({
+                    url: "@Url.Action("Index","PCGD")",
+                    type: "POST",
+                    data: { MaHP: MaHP },
+                    success: function (d) {
+                        $('#result-pcgd').html(d);
+                    }
+                })
+        }
+    </script>
+}

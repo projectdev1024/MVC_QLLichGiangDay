@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebsiteMVC.Models.PCGD>
+
+@{
+    var lopHP = ViewBag.MaHP as WebsiteMVC.Models.LopHP;
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.CanBoQuanLy, WebsiteMVC.Models.eRole.TroLiKhoa);
+}
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-edit"></i>PCGD lớp @lopHP.TenLop
+        </div>
+    </div>
+    <div class="portlet-body">
+        @if (per)
+        {
+            <div class="table-toolbar">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit",new { MaHP = lopHP?.MaHP })" id="sample_editable_1_new" class="btn btn-primary">
+                                Thêm <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <table class="table table-bordered" id="tablepcgd">
+            <thead>
+                <tr>
+                    <th>
+                        Lớp
+                    </th>
+                    <th>
+                        Môn học
+                    </th>
+                    <th>
+                        Giáo viên
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LopHP.TenLop)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.LopHP.MonHoc.TenMonHoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GV.HoTen)
+                        </td>
+
+                        <td>
+                            <a href="@Url.Action("Index","LichGD",new { MaPCGD = item.MaPCGD})" class="btn btn-primary"><i class="fa fa-info"></i> Lịch GD</a>
+                            <a href="@Url.Action("Edit","DNDoiGV",new { MaPCGD = item.MaPCGD })" id="sample_editable_1_new" class="btn green">
+                                <i class="fa fa-plus"></i> ĐN đổi giáo viên
+                            </a>
+                            @if (per)
+                            {
+                                <a href="@Url.Action("Edit",new { id = item.MaPCGD})" class="btn btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                <span onclick="delete_object(this,'@item.MaPCGD')" class="btn btn-warning"><i class="fa fa-trash-o"></i> Xóa</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

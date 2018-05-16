@@ -1,0 +1,50 @@
+﻿@model WebsiteMVC.Models.DoiTuong
+
+@{
+    ViewBag.Title = "ĐỐI TƯỢNG";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaDoiTuong)
+                @Html.HiddenFor(q => q.Active)
+
+                <div class="form-group">
+                    @Html.Label("Tên đối tượng", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenDoiTuong, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Hệ số", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-2">
+                        <div class="input-group">
+                            @Html.EditorFor(model => model.HeSo, new { htmlAttributes = new { @class = "form-control", required = "true", type = "number" } })
+                            <span class="input-group-addon" id="basic-addon2">%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn green" />
+                        <a href="@Url.Action("Index")" class="btn btn-default"><i class="fa fa-list"></i> DANH SÁCH ĐỐI TƯỢNG</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>
+
+

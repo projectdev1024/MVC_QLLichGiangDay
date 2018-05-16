@@ -1,0 +1,111 @@
+﻿<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+    <!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+    <li class="sidebar-toggler-wrapper">
+        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+        <div class="sidebar-toggler">
+        </div>
+        <!-- END SIDEBAR TOGGLER BUTTON -->
+    </li>
+    <!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+    @*<li class="sidebar-search-wrapper">
+            <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
+            <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+            <!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+            <form class="sidebar-search " action="extra_search.html" method="POST">
+                <a href="javascript:;" class="remove">
+                    <i class="icon-close"></i>
+                </a>
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+                    </span>
+                </div>
+            </form>
+            <!-- END RESPONSIVE QUICK SEARCH FORM -->
+        </li>*@
+    @if (WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.Admin, WebsiteMVC.Models.eRole.CanBoQuanLy))
+    {
+        <li>
+            <a href="@Url.Action("Index","MonHoc")">
+                <i class="icon-home"></i>
+                <span class="title">MÔN HỌC</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","GV")">
+                <i class="icon-home"></i>
+                <span class="title">GIÁO VIÊN</span>
+            </a>
+        </li>
+    }
+    <li>
+        <a href="@Url.Action("TKB","LichGD")">
+            <i class="icon-home"></i>
+            <span class="title">THỜI KHÓA BIỂU</span>
+        </a>
+    </li>
+    @if (WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.Admin, WebsiteMVC.Models.eRole.GiangVien))
+    {
+        <li>
+            <a href="@Url.Action("Index","DNDoiGio")">
+                <i class="icon-home"></i>
+                <span class="title"> ĐỀ NGHỊ ĐỔI GIỜ</span>
+            </a>
+        </li>
+        <li>
+            <a href="@Url.Action("Index","DNDoiGV")">
+                <i class="icon-home"></i>
+                <span class="title"> ĐỀ NGHỊ ĐỐI GIÁO VIÊN</span>
+            </a>
+        </li>
+    }
+    <li>
+        <a href="@Url.Action("Index","LopHP")">
+            <i class="icon-home"></i>
+            <span class="title">LỚP HỌC PHẦN</span>
+        </a>
+    </li>
+    @if (WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.Admin))
+    {
+        <li>
+            <a href="javascript:;">
+                <i class="icon-home"></i>
+                <span class="title">DANH MỤC</span>
+                <span class="arrow "></span>
+            </a>
+            <ul class="sub-menu">
+                <li>
+                    <a href="@Url.Action("Index","BoMon")">
+                        <i class="icon-bulb"></i>
+                        BỘ MÔN
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","MonHoc")">
+                        <i class="icon-bulb"></i>
+                        MÔN HỌC
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","HocHam")">
+                        <i class="icon-bulb"></i>
+                        HỌC HÀM
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","ChucVu")">
+                        <i class="icon-bulb"></i>
+                        CHỨC VỤ
+                    </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("Index","NamHoc")">
+                        <i class="icon-bulb"></i>
+                        NĂM HỌC
+                    </a>
+                </li>
+            </ul>
+        </li>
+    }
+</ul>

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<WebsiteMVC.Models.DMG_GV>
+
+<h3>TẢI GIẢNG DẠY</h3>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>Tên giáo viên</td>
+            <td>DMG chuẩn</td>
+            <td>Miễn giảm</td>
+            <td>Tải NV</td>
+            <td>Tải TT</td>
+            <td>Tải vượt</td>
+            <td>Trạng thái</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr class="@(item.TaiVuot==0?"success": item.TaiVuot > 0 ? "warning":"need")">
+                <td>@item.DMG.GV.HoTen</td>
+                <td>@item.DMG.TongDMG</td>
+                <td>@item.DMG.TongHeSo %</td>
+                <td>@item.TaiNV</td>
+                <td>@item.TaiTT</td>
+                <td><b>@item.TaiVuot</b></td>
+                <td>@(item.TaiVuot == 0 ? "Phù hợp" : item.TaiVuot < 0 ? "Chưa đủ" : "Quá mức")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p><i>*** Những giáo viên chưa có định mức giảng của kì học sẽ không xuất hiện ở đây</i></p>
+<style>
+    .warning {
+        background-color: antiquewhite;
+    }
+
+    .success {
+        background-color: aquamarine;
+    }
+
+    .need {
+        background-color: cornflowerblue;
+    }
+</style>

@@ -1,0 +1,106 @@
+﻿@model List<WebsiteMVC.Models.LichGD>
+
+@{
+    var NamHoc = ViewBag.NamHoc as WebsiteMVC.Models.NamHoc;
+}
+<h2>THỜI KHÓA BIỂU @NamHoc.mNamHoc</h2>
+<table class="table table-bordered" style="width: 100%;">
+    <tr>
+        <td colspan="2">Tháng\Thứ</td>
+        @foreach (var item in Enumerable.Range(2, 6))
+        {
+            <td><b>Thứ @item</b></td>
+        }
+        <td><b>Chủ nhật</b></td>
+    </tr>
+    @{
+        var thu = (int)NamHoc.BatDau?.DayOfWeek;
+        var start = NamHoc.BatDau.Value.AddDays(8 - thu);
+        int tuan = 1;
+    }
+    <tr>
+        <td>Tháng @(NamHoc.BatDau?.Month)</td>
+        <td>Tuần @tuan</td>
+        @for (int i = 1; i < thu; i++)
+        {
+            <td>///</td>
+        }
+        @for (int i = thu; i < 7; i++)
+        {
+            var fdate = NamHoc.BatDau.Value.AddDays(i - thu);
+            <td>
+                @fdate.ToString("dd/MM")
+                <hr />
+                <ul>
+                    @{
+                        var lst = Model.Where(q => q.Thu == i && q.NgayBD <= fdate && q.NgayKT >= fdate);
+                    }
+                    @foreach (var item in lst)
+                    {
+                        <li>@item.PCGD.LopHP.MonHoc.TenMonHoc - Tiết @item.Tiet (@item.PCGD.GV.HoTen) </li>
+                    }
+                </ul>
+            </td>
+        }
+        <td>
+            @{ var f2date = NamHoc.BatDau.Value.AddDays(7 - thu);}
+            @f2date.ToString("dd/MM")
+            <hr />
+            <ul>
+                @{
+                    var lst2 = Model.Where(q => q.Thu == 0 && q.NgayBD <= f2date && q.NgayKT >= f2date);
+                }
+                @foreach (var item in lst2)
+                {
+                    <li>@item.PCGD.LopHP.MonHoc.TenMonHoc - Tiết @item.Tiet (@item.PCGD.GV.HoTen) </li>
+                }
+            </ul>
+        </td>
+    </tr>
+    @for (DateTime date = start; date < NamHoc.KetThuc; date = date.AddDays(7))
+    {
+        tuan++;
+        <tr>
+            <td>Tháng @date.Month</td>
+            <td>Tuần @tuan</td>
+            @for (int i = 0; i < 7; i++)
+            {
+                var mdate = date.AddDays(i);
+                if (mdate > NamHoc.KetThuc)
+                {
+                    <td>///</td>
+                }
+                else
+                {
+                    <td>
+                        <p>@date.AddDays(i).ToString("dd/MM")</p>
+                        <hr />
+                        <ul>
+                            @{
+                                var lst = Model.Where(q => q.Thu == i && q.NgayBD <= mdate && q.NgayKT >= mdate);
+                            }
+                            @foreach (var item in lst)
+                            {
+                                <li>@item.PCGD.LopHP.MonHoc.TenMonHoc - Tiết @item.Tiet (@item.PCGD.GV.HoTen) </li>
+                            }
+                        </ul>
+                    </td>
+                }
+            }
+        </tr>
+    }
+</table>
+
+<style>
+    table {
+        border-collapse: collapse;
+    }
+
+    table, th, td {
+        border: 1px solid black;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+</style>

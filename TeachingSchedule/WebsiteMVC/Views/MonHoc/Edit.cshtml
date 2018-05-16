@@ -1,0 +1,47 @@
+﻿@model WebsiteMVC.Models.MonHoc
+
+@{
+    ViewBag.Title = "Môn học";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaMH)
+                @Html.HiddenFor(model => model.Active)
+
+                <div class="form-group">
+                    @Html.Label("Tên môn học", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.TenMonHoc, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Bô môn", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.MaBoMon, ViewBag.BoMons as SelectList, "Vui lòng chọn", new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn green" />
+                        <a href="@Url.Action("Index")" class="btn btn-default"><i class="fa fa-list"></i> DANH SÁCH MÔN HỌC</a>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    </div>
+</div>

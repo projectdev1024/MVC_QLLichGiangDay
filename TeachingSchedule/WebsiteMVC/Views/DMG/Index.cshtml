@@ -1,0 +1,122 @@
+﻿@model IEnumerable<WebsiteMVC.Models.DMG>
+
+@{
+    ViewBag.Title = "ĐỊNH MỨC GIẢNG";
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.CanBoQuanLy, WebsiteMVC.Models.eRole.TroLiKhoa);
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-edit"></i>@ViewBag.Title
+        </div>
+    </div>
+    <div class="portlet-body">
+        @if (per)
+        {
+            <div class="table-toolbar">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit",new { MaGV = ViewBag.MaGV })" id="sample_editable_1_new" class="btn green">
+                                Thêm <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+        <table class="table table-bordered" id="table4">
+            <thead>
+                <tr>
+                    <th>
+                        KỲ HỌC
+                    </th>
+                    <th>
+                        HỌ TÊN GV
+                    </th>
+                    <th>
+                        HỌC HÀM
+                    </th>
+                    <th>
+                        TỔNG HỆ SỐ
+                    </th>
+                    <th>
+                        TỔNG DMG
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NamHoc.mNamHoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GV.HoTen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HocHam.TenHocHam)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongHeSo)%
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TongDMG)
+                        </td>
+                        <td>
+                            @if (per)
+                            {
+                                <span class="btn btn-info" onclick="loadCTDMG('@item.MaDMG')"><i class="fa fa-info"></i> Chi tiết</span>
+                                <a href="@Url.Action("Edit",new { id = item.MaDMG})" class="btn btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                <span onclick="delete_DMG(this,'@item.MaDMG')" class="btn btn-warning"><i class="fa fa-trash-o"></i> Xóa</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <hr />
+        <h4>Chi tiết Chức vụ</h4>
+        <p id="loadCTDMG">
+            Bấm <span class="btn btn-info"><i class="fa fa-info"></i> Chi tiết</span> để xem.
+        </p>
+    </div>
+</div>
+
+
+<script>
+        $("#table4").DataTable();
+
+        function delete_DMG(target, id) {
+            if (confirm("Bạn có muốn xóa không?")) {
+                $.ajax({
+                    url: "@Url.Action("Delete")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (d) {
+                        if (d) {
+                            $(target).closest("tr").remove();
+                        } else {
+                            alert("Xóa thất bại");
+                        }
+                    }
+                })
+            }
+        }
+
+        function loadCTDMG(MaDMG) {
+             $.ajax({
+                    url: "@Url.Action("Index","CT_DMG")",
+                    type: "GET",
+                    data: { MaDMG: MaDMG },
+                    success: function (d) {
+                        $("#loadCTDMG").html(d);
+                    }
+                })
+        }
+</script>

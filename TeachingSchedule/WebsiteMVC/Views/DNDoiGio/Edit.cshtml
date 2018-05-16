@@ -1,0 +1,62 @@
+﻿@model WebsiteMVC.Models.DNDoiGio
+
+@{
+    ViewBag.Title = "ĐỀ NGHỈ ĐỔI THỜI GIAN DẠY";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+    var MaLichGD2s = ViewBag.MaLichGD2s as List<WebsiteMVC.Models.LichGD>;
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaDN)
+                @Html.HiddenFor(model => model.MaLichGD)
+                @Html.HiddenFor(model => model.Status)
+                @Html.HiddenFor(model => model.NgayTao)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.MaLichGD2, "Giáo viên đề nghị", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>Chọn</th>
+                                    <th>Giáo viên</th>
+                                    <th>Thứ</th>
+                                    <th>Tiết</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in MaLichGD2s)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label>@Html.RadioButtonFor(q => q.MaLichGD2, item.MaLichGD) Chọn</label>
+                                        </td>
+                                        <td>@(item.PCGD?.GV.HoTen)</td>
+                                        <td>@item.Thu</td>
+                                        <td>@item.Tiet</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn green" />
+                        <a href="@Url.Action("Index")" class="btn btn-default"><i class="fa fa-list"></i> DANH SÁCH ĐƠN ĐỀ NGHỊ</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

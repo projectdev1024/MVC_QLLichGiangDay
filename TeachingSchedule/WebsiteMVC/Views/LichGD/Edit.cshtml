@@ -1,0 +1,69 @@
+﻿@model WebsiteMVC.Models.LichGD
+
+@{
+    ViewBag.Title = "LỊCH GIẢNG DẠY";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+
+<div class="panel panel-default">
+    <div class="panel-body">
+
+        @using (Html.BeginForm())
+        {
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaLichGD)
+                @Html.HiddenFor(model => model.Status)
+                @Html.HiddenFor(model => model.MaPCGD)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NgayBD, "Ngày bắt đầu", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.NgayBD, new { @class = "form-controls", required = "true", type = "date", Value = Model.NgayBD?.ToString("yyyy-MM-dd") })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NgayKT, "Ngày kết thúc", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.NgayKT, new { @class = "form-controls", required = "true", type = "date", Value = Model.NgayBD?.ToString("yyyy-MM-dd") })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Thu, "Thứ", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <select name="Thu" required>
+                            <option value="1">Thứ 2</option>
+                            <option value="2">Thứ 3</option>
+                            <option value="3">Thứ 4</option>
+                            <option value="4">Thứ 5</option>
+                            <option value="5">Thứ 6</option>
+                            <option value="6">Thứ 7</option>
+                            <option value="0">Chủ nhật</option>
+                        </select>
+                        <script>
+                            $('[name="thu"]').val(@Model.Thu);
+                        </script>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Tiet, "Tiết", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Tiet, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn green" />
+                        <a href="@Url.Action("Index",new { id = Model.MaPCGD})" class="btn btn-default"><i class="fa fa-list"></i> LỊCH GIẢNG DẠY</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

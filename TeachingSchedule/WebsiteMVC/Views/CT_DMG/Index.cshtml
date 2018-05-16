@@ -1,0 +1,35 @@
+﻿@model  List<WebsiteMVC.Models.CT_DMG>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(q => Model[0].MaDMG)
+    <table>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.HiddenFor(q => Model[i].MaDMG)
+                        @Html.HiddenFor(q => Model[i].IDCT_DMG)
+                        <label>
+                            @if (Model[i].IDCT_DMG > 0)
+                            {
+                                @Html.TextBoxFor(q => Model[i].MaCV, new { type = "checkbox", @checked = "checked" })
+                            }
+                            else
+                            {
+                                @Html.TextBoxFor(q => Model[i].MaCV, new { type = "checkbox" })
+                            }
+                            @Model[i].ChucVu.HeSo % | @Model[i].ChucVu.TenChucVu
+                        </label>
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td><input type="submit" value="Save" class="btn green" /></td>
+            </tr>
+        </tbody>
+    </table>
+    <hr />
+    <p><i>*** Tổng định mức giảng không vượt quá 50%</i></p>
+}

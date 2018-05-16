@@ -1,0 +1,95 @@
+﻿@model IEnumerable<WebsiteMVC.Models.DNDoiGio>
+
+@{
+    ViewBag.Title = "ĐỀ NGHỊ ĐỔI THƠI GIAN DẠY";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.CanBoQuanLy, WebsiteMVC.Models.eRole.TroLiKhoa);
+}
+
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-edit"></i>@ViewBag.Title
+        </div>
+    </div>
+    <div class="portlet-body">
+        <div class="table-toolbar">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="btn-group">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <table class="table table-bordered" id="table">
+            <thead>
+                <tr>
+                    <th>Ngày tạo</th>
+                    <th>Giáo viên đề nghị</th>
+                    <th>Lớp</th>
+                    <th>Thứ</th>
+                    <th>Tiết</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayTao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LichGD.PCGD.GV.HoTen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LichGD.PCGD.LopHP.TenLop)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LichGD.Thu)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LichGD.Tiet)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Export",new { id = item.MaDN})" class="btn btn-primary"><i class="fa fa-file-word-o"></i> Đơn</a>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section css{
+    <link href="/Content/theme/assets/global/plugins/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+@section js{
+    <script type="text/javascript" src="/Content/theme/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/Content/theme/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+
+    <script>
+        $("#table").DataTable();
+
+        function Status(target, id, status) {
+            if (confirm("Bạn có muốn thay đổi không?")) {
+                $.ajax({
+                    url: "@Url.Action("Status")",
+                    type: "POST",
+                    data: { id: id, status: status },
+                    success: function (d) {
+                        if (d) {
+                            window.location.reload();
+                        } else {
+                            alert("Thao tác thất bại");
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+}

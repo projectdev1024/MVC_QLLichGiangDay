@@ -1,0 +1,101 @@
+﻿@model WebsiteMVC.Models.LopHP
+
+@{
+    ViewBag.Title = "LỚP HỌC PHẦN";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+<div class="panel panel-default">
+    <div class="panel-body">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.MaHP)
+                @Html.HiddenFor(model => model.Active)
+
+                <div class="form-group">
+                    @Html.Label("Năm học", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.IDNamHoc, ViewBag.IDNamHocs as SelectList, "Vui lòng chọn", new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Môn học", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(q => q.MaMH, ViewBag.MaMH as SelectList, htmlAttributes: new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.Label("Số tiết TKB", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SoTietTKB, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("LHDT", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.LHDT, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.Label("Kíp", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.Kip, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.Label("Địa điểm", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.DiaDiem, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Tên lớp", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TenLop, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.Label("Sĩ số", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.SiSo, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("TGTHIKT", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.TGTHIKT, new { required = "true", type = "date", Value = Model.TGTHIKT?.ToString("yyyy-MM-dd") })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.Label("Hình thức thi", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.HinhThucThi, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn green" />
+                        <a href="@Url.Action("Index")" class="btn btn-default"><i class="fa fa-list"></i> DANH SÁCH LỚP HỌC PHẦN</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

@@ -1,0 +1,193 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TeachingScheduleModelStoreContainer" CdmEntityContainer="TeachingScheduleEntities">
+    <EntitySetMapping Name="BoMons">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.BoMon">
+        <MappingFragment StoreEntitySet="BoMon">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TenBoMon" ColumnName="TenBoMon" />
+          <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChucVus">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.ChucVu">
+        <MappingFragment StoreEntitySet="ChucVu">
+          <ScalarProperty Name="HeSo" ColumnName="HeSo" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TenChucVu" ColumnName="TenChucVu" />
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CT_DMG">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.CT_DMG">
+        <MappingFragment StoreEntitySet="CT_DMG">
+          <ScalarProperty Name="MaCV" ColumnName="MaCV" />
+          <ScalarProperty Name="MaDMG" ColumnName="MaDMG" />
+          <ScalarProperty Name="IDCT_DMG" ColumnName="IDCT_DMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DMGs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.DMG">
+        <MappingFragment StoreEntitySet="DMG">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TongDMG" ColumnName="TongDMG" />
+          <ScalarProperty Name="MaHocHam" ColumnName="MaHocHam" />
+          <ScalarProperty Name="TongHeSo" ColumnName="TongHeSo" />
+          <ScalarProperty Name="IDNamHoc" ColumnName="IDNamHoc" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+          <ScalarProperty Name="MaDMG" ColumnName="MaDMG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DNDoiGios">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.DNDoiGio">
+        <MappingFragment StoreEntitySet="DNDoiGio">
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MaLichGD2" ColumnName="MaLichGD2" />
+          <ScalarProperty Name="MaLichGD" ColumnName="MaLichGD" />
+          <ScalarProperty Name="MaDN" ColumnName="MaDN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DNDoiGVs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.DNDoiGV">
+        <MappingFragment StoreEntitySet="DNDoiGV">
+          <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
+          <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+          <ScalarProperty Name="NgayTao" ColumnName="NgayTao" />
+          <ScalarProperty Name="MaPCGD" ColumnName="MaPCGD" />
+          <ScalarProperty Name="MaDN" ColumnName="MaDN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GVs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.GV">
+        <MappingFragment StoreEntitySet="GV">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="QuyenHan" ColumnName="QuyenHan" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="Avatar" ColumnName="Avatar" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HocHams">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.HocHam">
+        <MappingFragment StoreEntitySet="HocHam">
+          <ScalarProperty Name="DMG" ColumnName="DMG" />
+          <ScalarProperty Name="HeSo" ColumnName="HeSo" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="TenHocHam" ColumnName="TenHocHam" />
+          <ScalarProperty Name="MaHocHam" ColumnName="MaHocHam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LichGDs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.LichGD">
+        <MappingFragment StoreEntitySet="LichGD">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Tiet" ColumnName="Tiet" />
+          <ScalarProperty Name="Thu" ColumnName="Thu" />
+          <ScalarProperty Name="NgayKT" ColumnName="NgayKT" />
+          <ScalarProperty Name="NgayBD" ColumnName="NgayBD" />
+          <ScalarProperty Name="MaPCGD" ColumnName="MaPCGD" />
+          <ScalarProperty Name="MaLichGD" ColumnName="MaLichGD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LopHPs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.LopHP">
+        <MappingFragment StoreEntitySet="LopHP">
+          <ScalarProperty Name="SoTietQuyChuan" ColumnName="SoTietQuyChuan" />
+          <ScalarProperty Name="TongHeSo" ColumnName="TongHeSo" />
+          <ScalarProperty Name="HeSoDD" ColumnName="HeSoDD" />
+          <ScalarProperty Name="HeSoQS" ColumnName="HeSoQS" />
+          <ScalarProperty Name="HeSoLHDT" ColumnName="HeSoLHDT" />
+          <ScalarProperty Name="HeSoKip" ColumnName="HeSoKip" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+          <ScalarProperty Name="HinhThucThi" ColumnName="HinhThucThi" />
+          <ScalarProperty Name="TGTHIKT" ColumnName="TGTHIKT" />
+          <ScalarProperty Name="TenLop" ColumnName="TenLop" />
+          <ScalarProperty Name="SoTietTKB" ColumnName="SoTietTKB" />
+          <ScalarProperty Name="Kip" ColumnName="Kip" />
+          <ScalarProperty Name="DiaDiem" ColumnName="DiaDiem" />
+          <ScalarProperty Name="LHDT" ColumnName="LHDT" />
+          <ScalarProperty Name="SiSo" ColumnName="SiSo" />
+          <ScalarProperty Name="IDNamHoc" ColumnName="IDNamHoc" />
+          <ScalarProperty Name="MaHP" ColumnName="MaHP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MonHocs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.MonHoc">
+        <MappingFragment StoreEntitySet="MonHoc">
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
+          <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />
+          <ScalarProperty Name="MaMH" ColumnName="MaMH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NamHocs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.NamHoc">
+        <MappingFragment StoreEntitySet="NamHoc">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="KetThuc" ColumnName="KetThuc" />
+          <ScalarProperty Name="BatDau" ColumnName="BatDau" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="NamHoc1" ColumnName="NamHoc" />
+          <ScalarProperty Name="KyHoc" ColumnName="KyHoc" />
+          <ScalarProperty Name="IDNamHoc" ColumnName="IDNamHoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NCKHs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.NCKH">
+        <MappingFragment StoreEntitySet="NCKH">
+          <ScalarProperty Name="SoGioNC" ColumnName="SoGioNC" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="TaiLieu" ColumnName="TaiLieu" />
+          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+          <ScalarProperty Name="HangMuc" ColumnName="HangMuc" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+          <ScalarProperty Name="MaNCKH" ColumnName="MaNCKH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PCGDs">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.PCGD">
+        <MappingFragment StoreEntitySet="PCGD">
+          <ScalarProperty Name="MaGV3" ColumnName="MaGV3" />
+          <ScalarProperty Name="MaGV2" ColumnName="MaGV2" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="MaHP" ColumnName="MaHP" />
+          <ScalarProperty Name="MaGV" ColumnName="MaGV" />
+          <ScalarProperty Name="MaPCGD" ColumnName="MaPCGD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TeachingScheduleModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

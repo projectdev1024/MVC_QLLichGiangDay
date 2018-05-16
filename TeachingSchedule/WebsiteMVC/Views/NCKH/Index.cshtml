@@ -1,0 +1,100 @@
+﻿@model IEnumerable<WebsiteMVC.Models.NCKH>
+
+@{
+    ViewBag.Title = "NGHIÊN CỨU KHOA HỌC";
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.CanBoQuanLy, WebsiteMVC.Models.eRole.TroLiKhoa);
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-edit"></i>@ViewBag.Title
+        </div>
+    </div>
+    <div class="portlet-body">
+        @if (per)
+        {
+            <div class="table-toolbar">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit",new { MaGV = ViewBag.MaGV})" id="sample_editable_1_new" class="btn green">
+                                Thêm <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+        <table class="table table-bordered" id="table3">
+            <thead>
+                <tr>
+                    <th>
+                        HẠNG MỤC
+                    </th>
+                    <th>
+                        HỌ TÊN
+                    </th>
+                    <th>
+                        THỜI GIAN - SỐ GIỜ NC
+                    </th>
+                    <th>
+                        NỘI DUNG
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HangMuc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GV.HoTen)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ThoiGian) - @Html.DisplayFor(modelItem => item.SoGioNC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NoiDung)
+                        </td>
+                        <td>
+                            @if (per)
+                            {
+                                <a href="@Url.Action("Edit",new { id = item.MaNCKH, MaGV = ViewBag.MaGV})" class="btn btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                <span onclick="delete_NCKH(this,'@item.MaNCKH')" class="btn btn-warning"><i class="fa fa-trash-o"></i> Xóa</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</div>
+
+<script>
+        $("#table3").DataTable();
+
+        function delete_NCKH(target, id) {
+            if (confirm("Bạn có muốn xóa không?")) {
+                $.ajax({
+                    url: "@Url.Action("Delete")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (d) {
+                        if (d) {
+                            $(target).closest("tr").remove();
+                        } else {
+                            alert("Xóa thất bại");
+                        }
+                    }
+                })
+            }
+        }
+</script>

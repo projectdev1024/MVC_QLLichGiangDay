@@ -1,0 +1,33 @@
+﻿@model List<WebsiteMVC.Models.LichGD>
+
+@{
+    ViewBag.Title = "TKB";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+
+@using (Html.BeginForm())
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Năm học</span>
+                    @Html.DropDownList("IDNamHoc", ViewBag.IDNamHocs as SelectList, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="input-group">
+                    <span class="input-group-addon" id="basic-addon1">Giáo viên</span>
+                    @Html.DropDownList("MaGV", ViewBag.MaGVs as SelectList, "Tất cả", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-success">Xem</button>
+                <button name="exportExcel" value="1" class="btn btn-primary">Xuất PDF</button>
+            </div>
+        </div>
+    </div>
+    <hr />
+    @Html.Partial("TKBPartial", Model)
+}

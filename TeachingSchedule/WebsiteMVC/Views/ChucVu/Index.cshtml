@@ -1,0 +1,98 @@
+﻿@model IEnumerable<WebsiteMVC.Models.ChucVu>
+
+@{
+    ViewBag.Title = "DANH SÁCH CHỨC VỤ";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(WebsiteMVC.Models.eRole.CanBoQuanLy, WebsiteMVC.Models.eRole.TroLiKhoa);
+}
+
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-edit"></i>@ViewBag.Title
+        </div>
+    </div>
+    <div class="portlet-body">
+        @if (per)
+        {
+            <div class="table-toolbar">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="btn-group">
+                            <a href="@Url.Action("Edit")" id="sample_editable_1_new" class="btn green">
+                                Thêm <i class="fa fa-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        <table class="table table-bordered" id="table">
+            <thead>
+                <tr>
+                    <th>
+                        TÊN CHỨC VỤ
+                    </th>
+                    <th>
+                        HỆ SỐ
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenChucVu)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.HeSo)
+                        </td>
+                        <td>
+                            @if (per)
+                            {
+                                <a href="@Url.Action("Edit",new { id = item.MaCV})" class="btn btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
+                                <span onclick="delete_object(this,@item.MaCV)" class="btn btn-warning"><i class="fa fa-trash-o"></i> Xóa</span>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@section css{
+    <link href="/Content/theme/assets/global/plugins/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" />
+}
+
+@section js{
+    <script type="text/javascript" src="/Content/theme/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="/Content/theme/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js"></script>
+
+    <script>
+        $("#table").DataTable();
+
+        function delete_object(target, id) {
+            if (confirm("Bạn có muốn xóa không?")) {
+                $.ajax({
+                    url: "@Url.Action("Delete")",
+                    type: "POST",
+                    data: { id: id },
+                    success: function (d) {
+                        if (d) {
+                            $(target).closest("tr").remove();
+                        } else {
+                            alert("Xóa thất bại");
+                        }
+                    }
+                })
+            }
+        }
+    </script>
+}
+

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="98837c42c3a548f09fbb94032f05ffaf" Name="Diagram1" ZoomLevel="109">
+        <EntityTypeShape EntityType="TeachingScheduleModel.BoMon" Width="1.5" PointX="1.5" PointY="26.875" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.ChucVu" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.CT_DMG" Width="1.5" PointX="5.25" PointY="4.75" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.DMG" Width="1.5" PointX="3" PointY="4.125" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.DNDoiGio" Width="1.5" PointX="7.5" PointY="12.625" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.DNDoiGV" Width="1.5" PointX="5.25" PointY="8.375" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.GV" Width="1.5" PointX="0.75" PointY="7.875" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.HocHam" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.LichGD" Width="1.5" PointX="5.25" PointY="12.375" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.LopHP" Width="1.5" PointX="0.75" PointY="17.25" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.MonHoc" Width="1.5" PointX="1.5" PointY="23.625" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.NamHoc" Width="1.5" PointX="0.75" PointY="12.875" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.NCKH" Width="1.5" PointX="3" PointY="19.5" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.PCGD" Width="1.5" PointX="3" PointY="8.25" />
+        <EntityTypeShape EntityType="TeachingScheduleModel.sysdiagram" Width="1.5" PointX="7.75" PointY="2.125" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_MonHoc_BoMon" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_CT_DMG_ChucVu" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_CT_DMG_DMG" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_DMG_GV" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_DMG_HocHam" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_DMG_NamHoc" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_DNDoiGio_LichGD" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_DNDoiGV_GV" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_DNDoiGV_PCGD" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_NCKH_GV" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_PCGD_GV" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_LichGD_PCGD" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_LopHP_MonHoc" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_LopHP_NamHoc" />
+        <AssociationConnector Association="TeachingScheduleModel.FK_PCGD_LopHP" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
