@@ -61,8 +61,7 @@ namespace WebsiteMVC.Controllers
 
             var gvdn = db.GVs.FirstOrDefault(q => q.MaGV == obj.LichGD.PCGD.MaGV);
             dicReplace.Add("<HoTen>", gvdn.HoTen);
-            //dicReplace.Add("<HocHam>", gvdn.HocHam.TenHocHam);
-            //dicReplace.Add("<HocVi>", gvdn.HocHam.TenHocHam);
+            dicReplace.Add("<HocHam>", obj.LichGD.PCGD.LopHP.NamHoc.DMGs.FirstOrDefault()?.HocHam.TenHocHam);
             dicReplace.Add("<BoMon>", obj.LichGD.PCGD.LopHP.MonHoc.BoMon.TenBoMon);
             dicReplace.Add("<Mon>", obj.LichGD.PCGD.LopHP.MonHoc.TenMonHoc);
             dicReplace.Add("<Lop>", obj.LichGD.PCGD.LopHP.TenLop);
@@ -71,24 +70,25 @@ namespace WebsiteMVC.Controllers
 
             var pcgd2 = db.LichGDs.Find(obj.MaLichGD2);
             dicReplace.Add("<GV2>", pcgd2.PCGD.GV.HoTen);
-            //dicReplace.Add("<HocHam2>", pcgd2.PCGD.GV.HocHam.TenHocHam);
-            //dicReplace.Add("<HocVi2>", pcgd2.PCGD.GV.HocHam.TenHocHam);
+            dicReplace.Add("<HocHam2>", pcgd2.PCGD.LopHP.NamHoc.DMGs.FirstOrDefault()?.HocHam.TenHocHam);
             dicReplace.Add("<BoMon2>", pcgd2.PCGD.LopHP.MonHoc.BoMon.TenBoMon);
             dicReplace.Add("<Mon2>", pcgd2.PCGD.LopHP.MonHoc.TenMonHoc);
             dicReplace.Add("<lop2>", pcgd2.PCGD.LopHP.TenLop);
-            dicReplace.Add("<LichDoiGio>", $"{gvdn.HoTen}: {obj.LichGD.Thu} {obj.LichGD.Tiet} <=> {pcgd2.PCGD.GV.HoTen}: {pcgd2.Thu} {pcgd2.Tiet}");
+            dicReplace.Add("<LichDoiGio>", $@"
+                GV đề nghị: {gvdn.HoTen} - Môn học: {obj.LichGD.PCGD.LopHP.MonHoc.TenMonHoc} - Thứ: {obj.LichGD.Thu} - Tiết: {obj.LichGD.Tiet} 
+                GV được đề nghị: {pcgd2.PCGD.GV.HoTen} - Môn học: {pcgd2.PCGD.LopHP.MonHoc.TenMonHoc} -Thứ: {pcgd2.Thu} - Tiết: {pcgd2.Tiet}");
 
             dicReplace.Add("<dd>", DateTime.Now.Day.ToString());
             dicReplace.Add("<mm>", DateTime.Now.Month.ToString());
             dicReplace.Add("<yyyy>", DateTime.Now.Year.ToString());
 
             string file = Server.MapPath("~/Content/word/DoiGio.docx");
-            using (DocX document = DocX.Load(file))
+            using (DocX document = DocX.Load(file).Copy())
             {
                 // Replace text in this document.
                 foreach (var item in dicReplace)
                 {
-                    document.ReplaceText(item.Key, item.Value);
+                    document.ReplaceText(item.Key, item.Value +"");
                 }
 
                 // Save changes made to this document.

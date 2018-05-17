@@ -32,14 +32,13 @@ namespace WebsiteMVC.Controllers
         {
             var dicReplace = new Dictionary<string, string>();
 
-            DNDoiGV obj = db.DNDoiGVs.FirstOrDefault(q => q.MaDN == id);
+            DNDoiGV obj = db.DNDoiGVs.Find(id);
 
             dicReplace.Add("<BoMon0>", obj.PCGD.LopHP.MonHoc.BoMon.TenBoMon.ToUpper());
 
             var gvdn = db.GVs.FirstOrDefault(q => q.MaGV == obj.PCGD.MaGV);
             dicReplace.Add("<HoTen>", gvdn.HoTen);
-            //dicReplace.Add("<HocHam>", gvdn.HocHam.TenHocHam);
-            //dicReplace.Add("<HocVi>", gvdn.HocHam.TenHocHam);
+            dicReplace.Add("<HocHam>", obj.PCGD.LopHP.NamHoc.DMGs.FirstOrDefault()?.HocHam.TenHocHam);
             dicReplace.Add("<BoMon>", obj.PCGD.LopHP.MonHoc.BoMon.TenBoMon);
             dicReplace.Add("<Mon>", obj.PCGD.LopHP.MonHoc.TenMonHoc);
             dicReplace.Add("<Lop>", obj.PCGD.LopHP.TenLop);
@@ -48,23 +47,22 @@ namespace WebsiteMVC.Controllers
 
             var gv2 = db.GVs.Find(obj.MaGV);
             dicReplace.Add("<GV2>", gv2.HoTen);
-            //dicReplace.Add("<HocHam2>", gv2.HocHam.TenHocHam);
-            //dicReplace.Add("<HocVi2>", gv2.HocHam.TenHocHam);
+            dicReplace.Add("<HocHam2>", gv2.DMGs.FirstOrDefault(q => q.IDNamHoc == obj.PCGD.LopHP.IDNamHoc)?.HocHam.TenHocHam);
 
             dicReplace.Add("<start>", obj.NgayBD?.ToString("dd-MM-yyyy"));
             dicReplace.Add("<end>", obj.NgayKT?.ToString("dd-MM-yyyy"));
 
             dicReplace.Add("<dd>", DateTime.Now.Day.ToString());
-            dicReplace.Add("<mm>", DateTime.Now.Month.ToString());
+            dicReplace.Add("<mm>", DateTime.Now.Month.ToString("00"));
             dicReplace.Add("<yyyy>", DateTime.Now.Year.ToString());
 
             string file = Server.MapPath("~/Content/word/DoiGV.docx");
-            using (DocX document = DocX.Load(file))
+            using (DocX document = DocX.Load(file).Copy())
             {
                 // Replace text in this document.
                 foreach (var item in dicReplace)
                 {
-                    document.ReplaceText(item.Key, item.Value);
+                    document.ReplaceText(item.Key, item.Value + "");
                 }
 
                 // Save changes made to this document.

@@ -93,7 +93,7 @@
     <Property Name="NgayBD" Type="datetime" />
     <Property Name="NgayKT" Type="datetime" />
     <Property Name="Thu" Type="int" />
-    <Property Name="Tiet" Type="int" />
+    <Property Name="Tiet" Type="nvarchar" MaxLength="50" />
     <Property Name="Status" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="LopHP">

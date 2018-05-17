@@ -186,7 +186,7 @@
     <Property Name="NgayBD" Type="DateTime" Precision="3" />
     <Property Name="NgayKT" Type="DateTime" Precision="3" />
     <Property Name="Thu" Type="Int32" />
-    <Property Name="Tiet" Type="Int32" />
+    <Property Name="Tiet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DNDoiGios" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD" FromRole="LichGD" ToRole="DNDoiGio" />
     <NavigationProperty Name="PCGD" Relationship="TeachingScheduleModel.FK_LichGD_PCGD" FromRole="LichGD" ToRole="PCGD" />
