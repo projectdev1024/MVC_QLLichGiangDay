@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -44,9 +45,21 @@ namespace WebsiteMVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(NCKH nCKH)
         {
+            var files = Request.Files;
+            if (files.Count == 1)
+            {
+                var file = files[0];
+                if (file != null && file.ContentLength > 0)
+                {
+                    var name_file = $"{DateTime.Now.ToString("hhmmssddMMyyyy")}_{Path.GetFileName(file.FileName)}";
+                    var path = "/Content/Upload/" + name_file;
+                    file.SaveAs(Server.MapPath(path));
+                    nCKH.TaiLieu = path;
+                }
+            }
+
             if (nCKH.MaNCKH > 0)
             {
                 db.Entry(nCKH).State = EntityState.Modified;

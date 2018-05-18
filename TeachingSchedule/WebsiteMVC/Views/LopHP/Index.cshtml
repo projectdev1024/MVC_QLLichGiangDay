@@ -24,6 +24,19 @@
                         @Html.DropDownList("IDNamHoc", namhoc, htmlAttributes: new { @class = "form-control" })
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon3">BỘ MÔN</span>
+                        @if (WebsiteMVC.Models.LoginHelper.GetAccount().QuyenHan == "Admin")
+                        {
+                            @Html.DropDownList("IDBoMon", ViewBag.IDBoMons as SelectList, "Tất cả bộ môn", htmlAttributes: new { @class = "form-control" })
+                        }
+                        else
+                        {
+                            @Html.DropDownList("IDBoMon", ViewBag.IDBoMons as SelectList, htmlAttributes: new { @class = "form-control" })
+                        }
+                    </div>
+                </div>
                 <input type="submit" name="submit" value="LỌC" class="btn green" />
                 <button type="submit" name="submit" value="Export" class="btn btn-primary">
                     Export <i class="fa fa-file-excel-o"></i>

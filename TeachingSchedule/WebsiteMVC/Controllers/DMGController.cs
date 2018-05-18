@@ -19,7 +19,7 @@ namespace WebsiteMVC.Controllers
         // GET: AdminCP/DMG
         public ActionResult Index(int? MaGV)
         {
-            var dMGs = db.DMGs.Where(d => d.Active != false && d.GV.MaGV == MaGV).ToList();
+            var dMGs = db.DMGs.Where(d => d.Active != false && d.GV.MaGV == MaGV && d.GV.MaBoMon == Account.MaBoMon).ToList();
             ViewBag.MaGV = MaGV;
             return View(dMGs);
         }
@@ -52,7 +52,6 @@ namespace WebsiteMVC.Controllers
 
         // POST: AdminCP/DMG/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(DMG obj)
         {
             if (obj.MaDMG > 0)

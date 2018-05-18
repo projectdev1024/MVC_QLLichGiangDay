@@ -19,11 +19,11 @@ namespace WebsiteMVC.Controllers
         private TeachingScheduleEntities db = new TeachingScheduleEntities();
 
         // GET: AdminCP/LopHP
-        public ActionResult Index(int? IDNamHoc, string submit = null)
+        public ActionResult Index(int? IDNamHoc, int? IDBoMon, string submit = null)
         {
             if (submit == "Export") return Export(IDNamHoc);
 
-            var namhoc = db.NamHocs.Where(q => q.Active != false).ToList();
+            var namhoc = db.NamHocs.Where(q => q.Active != false).OrderBy(q => q.TrangThai).ToList();
             if (IDNamHoc.HasValue == false)
             {
                 IDNamHoc = namhoc.Last().IDNamHoc;
@@ -31,8 +31,23 @@ namespace WebsiteMVC.Controllers
 
             ViewBag.NamHocs = namhoc.CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, IDNamHoc);
             var lopHPs = db.LopHPs.Include(l => l.MonHoc).Where(q => q.Active != false && q.IDNamHoc == IDNamHoc).ToList();
+            if (Account.QuyenHan == "Admin")
+            {
+                ViewBag.Title = $"LỚP HỌC PHẦN - TẤT CẢ BỘ MÔN";
+                ViewBag.IDBoMons = db.BoMons.Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, IDBoMon);
+                if (IDBoMon.HasValue) lopHPs = lopHPs.Where(q => q.MonHoc.MaBoMon == IDBoMon).ToList();
+            }
+            else
+            {
+                IDBoMon = Account.MaBoMon;
+                lopHPs = lopHPs.Where(q => q.MonHoc.MaBoMon == Account.MaBoMon).ToList();
+                ViewBag.Title = $"LỚP HỌC PHẦN - BỘ MÔN {Account.BoMon.TenBoMon}";
+                ViewBag.MaBoMons = new List<BoMon> { Account.BoMon }.CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, IDBoMon);
+                ViewBag.IDBoMons = db.BoMons.Where(q => q.Active != false && q.MaBoMon == Account.MaBoMon).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, IDBoMon);
+            }
+
             ViewBag.edit = namhoc.FirstOrDefault(q => q.IDNamHoc == IDNamHoc)?.TrangThai != "CLOSED";
-            return View(lopHPs.ToList());
+            return View(lopHPs);
         }
 
         public ActionResult Export(int? IDNamHoc)
@@ -117,32 +132,75 @@ namespace WebsiteMVC.Controllers
                     else if (q.SiSo > 100) q.HeSoQS = 0.6;
                     else q.HeSoQS = Math.Ceiling(((q.SiSo ?? 0) - 50) / 10.0) * 0.1;
                     q.TongHeSo = q.HeSoDD + q.HeSoKip + q.HeSoLHDT + q.HeSoQS + 1;
-                    q.SoTietQuyChuan = (int?)q.TongHeSo * q.SoTietTKB;
+                    q.SoTietQuyChuan = (int?)(q.TongHeSo * q.SoTietTKB);
                     db.LopHPs.Add(q);
                 }
             });
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { IDNamHoc });
+        }
+
+        private void _fillHeSo(LopHP q)
+        {
+            q.HeSoKip = q.Kip == "N" ? 0 : 0.5;
+            q.HeSoDD = q.DiaDiem == "HN" ? 0 : 0.5;
+            switch (q.LHDT)
+            {
+                case "DH":
+                    q.HeSoLHDT = 0;
+                    break;
+                case "CH":
+                    q.HeSoLHDT = 0.6;
+                    break;
+                case "LT":
+                    q.HeSoLHDT = 0.2;
+                    break;
+                case "CD":
+                    q.HeSoLHDT = 0;
+                    break;
+                case "AT":
+                    q.HeSoLHDT = 0.2;
+                    break;
+                default:
+                    q.HeSoLHDT = 0;
+                    break;
+            }
+            if (q.SiSo <= 50) q.HeSoQS = 0;
+            else if (q.SiSo > 100) q.HeSoQS = 0.6;
+            else q.HeSoQS = Math.Ceiling(((q.SiSo ?? 0) - 50) / 10.0) * 0.1;
+            q.TongHeSo = q.HeSoDD + q.HeSoKip + q.HeSoLHDT + q.HeSoQS + 1;
+            switch (q.MonHoc.M)
+            {
+                case "A":
+                    q.SoTietQuyChuan = (int)((1 + q.HeSoKip + q.HeSoLHDT + q.HeSoDD) * (15 + Math.Max(0, (float)((q.SiSo - 20) / 4))) * q.SoTietTKB);
+                    break;
+                case "TT":
+                    q.SoTietQuyChuan = (int)((1 + q.HeSoKip + q.HeSoLHDT + q.HeSoDD) * q.SiSo * 0.5);
+                    break;
+                case "M":
+                default:
+                    q.SoTietQuyChuan = (int?)(q.TongHeSo * q.SoTietTKB);
+                    break;
+            }
         }
 
         private LopHP GetLopHP(int? IDNamHoc, IXLRow row)
         {
             try
             {
-                var smh = row.Cell("B").Value.ToString();
+                var smh = row.Cell("C").Value.ToString();
                 var mh = db.MonHocs.FirstOrDefault(q => q.TenMonHoc.Trim().ToLower() == smh.Trim().ToLower());
                 if (mh == null) return null;
                 var res = new LopHP
                 {
                     IDNamHoc = IDNamHoc,
                     Active = true,
-                    SoTietTKB = int.Parse(row.Cell("D").Value.ToString()),
-                    LHDT = row.Cell("E").Value.ToString(),
-                    Kip = row.Cell("F").Value.ToString(),
-                    DiaDiem = row.Cell("G").Value.ToString(),
-                    TenLop = row.Cell("N").Value.ToString(),
-                    SiSo = int.Parse(row.Cell("O").Value.ToString()),
-                    HinhThucThi = row.Cell("Q").Value.ToString(),
+                    SoTietTKB = int.Parse(row.Cell("F").Value.ToString()),
+                    Kip = row.Cell("H").Value.ToString(),
+                    DiaDiem = row.Cell("K").Value.ToString(),
+                    TenLop = row.Cell("J").Value.ToString(),
+                    MaHocPhan = row.Cell("B").Value.ToString(),
+                    SiSo = int.Parse(row.Cell("I").Value.ToString()),
                 };
                 res.MaMH = mh.MaMH;
                 DateTime dateTime = DateTime.Now;
@@ -159,7 +217,6 @@ namespace WebsiteMVC.Controllers
             }
         }
 
-        // GET: AdminCP/LopHP/Edit/5
         public ActionResult Edit(int? MaHP)
         {
             LopHP lopHP;
@@ -171,16 +228,18 @@ namespace WebsiteMVC.Controllers
             {
                 lopHP = db.LopHPs.Find(MaHP);
             }
-            ViewBag.MaMH = new SelectList(db.MonHocs, "MaMH", "TenMonHoc", lopHP.MaMH);
+
+            var MaBoMon = LoginHelper.GetAccount().MaBoMon;
+            ViewBag.MaMH = db.MonHocs.Where(q => q.MaBoMon == MaBoMon).CreateSelectList(q => q.MaMH, q => q.TenMonHoc, lopHP.MaMH);
             ViewBag.IDNamHocs = db.NamHocs.Where(q => q.Active != false).CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, lopHP.IDNamHoc);
             return View(lopHP);
         }
 
-        // POST: AdminCP/LopHP/Edit/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(LopHP lopHP)
         {
+            lopHP.MonHoc = db.MonHocs.Find(lopHP.MaMH);
+            _fillHeSo(lopHP);
             if (lopHP.MaHP > 0)
             {
                 db.Entry(lopHP).State = EntityState.Modified;
@@ -190,10 +249,9 @@ namespace WebsiteMVC.Controllers
                 db.LopHPs.Add(lopHP);
             }
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { lopHP.IDNamHoc });
         }
 
-        // POST: AdminCP/LopHP/Delete/5
         public JsonResult Delete(int id)
         {
             LopHP lopHP = db.LopHPs.Find(id);

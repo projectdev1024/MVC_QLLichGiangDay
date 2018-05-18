@@ -1,14 +1,14 @@
 ﻿@model WebsiteMVC.Models.NCKH
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "NGHIÊN CỨU KHOA HỌC";
     Layout = "~/Views/Shared/_LayoutAmin.cshtml";
 }
 
 <div class="panel panel-default">
+    <div class="panel-body">@ViewBag.Title</div>
     <div class="panel-body">
-
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Edit", "NCKH", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -16,6 +16,7 @@
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 @Html.HiddenFor(model => model.MaNCKH)
                 @Html.HiddenFor(model => model.MaGV)
+                @Html.HiddenFor(model => model.TaiLieu)
 
                 <div class="form-group">
                     @Html.Label("Thời gian nghiên cứu", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -48,7 +49,13 @@
                 <div class="form-group">
                     @Html.Label("Tài liệu", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextAreaFor(model => model.TaiLieu, new { @class = "form-control", rows = "15" })
+                        @if (string.IsNullOrWhiteSpace(Model.TaiLieu) == false)
+                        {
+                            <p>Đã tải lên 1 file. <a href="@Model.TaiLieu" download="">Tải xuống</a></p>
+                        }
+                        <label>
+                            <input type="file" name="TaiLieu" value="" /> Tải tài liệu mới
+                        </label>
                     </div>
                 </div>
 

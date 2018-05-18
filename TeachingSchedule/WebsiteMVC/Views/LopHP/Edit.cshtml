@@ -6,6 +6,7 @@
 }
 
 <div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
         @using (Html.BeginForm())
         {
@@ -26,10 +27,16 @@
                 <div class="form-group">
                     @Html.Label("Môn học", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(q => q.MaMH, ViewBag.MaMH as SelectList, htmlAttributes: new { @class = "form-control" })
+                        @Html.DropDownListFor(q => q.MaMH, ViewBag.MaMH as SelectList, "Vui lòng chọn", htmlAttributes: new { @class = "form-control", required = "true" })
                     </div>
                 </div>
 
+                <div class="form-group">
+                    @Html.Label("Mã học phần", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextBoxFor(model => model.MaHocPhan, new { @class = "form-control", required = "true" })
+                    </div>
+                </div>
 
                 <div class="form-group">
                     @Html.Label("Số tiết TKB", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,7 +48,14 @@
                 <div class="form-group">
                     @Html.Label("LHDT", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.LHDT, new { @class = "form-control", required = "true" })
+                        <select name="LHDT" required class="form-control">
+                            <option value="">Vui lòng chọn</option>
+                            <option value="DH">DH</option>
+                            <option value="CH">CH</option>
+                            <option value="LT">LT</option>
+                            <option value="CD">CD</option>
+                            <option value="AT">AT</option>
+                        </select>
                     </div>
                 </div>
 
@@ -49,7 +63,12 @@
                 <div class="form-group">
                     @Html.Label("Kíp", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.Kip, new { @class = "form-control", required = "true" })
+                        <select name="Kip" required class="form-control">
+                            <option value="">Vui lòng chọn</option>
+                            <option value="H">H</option>
+                            <option value="N">N</option>
+                            <option value="NN">NN</option>
+                        </select>
                     </div>
                 </div>
 
@@ -57,7 +76,16 @@
                 <div class="form-group">
                     @Html.Label("Địa điểm", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.DiaDiem, new { @class = "form-control", required = "true" })
+                        <select name="DiaDiem" required class="form-control">
+                            <option value="">Vui lòng chọn</option>
+                            <option value="HN">Khu A Hà Nội</option>
+                            <option value="HN">
+                                Xuân Phương - Hà nội
+                            </option>
+                            <option value="VY">
+                                Khu 125 Vĩnh Yên
+                            </option>
+                        </select>
                     </div>
                 </div>
 
@@ -77,14 +105,14 @@
                 <div class="form-group">
                     @Html.Label("TGTHIKT", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.TGTHIKT, new { required = "true", type = "date", Value = Model.TGTHIKT?.ToString("yyyy-MM-dd") })
+                        @Html.TextBoxFor(model => model.TGTHIKT, new { type = "date", Value = Model.TGTHIKT?.ToString("yyyy-MM-dd") })
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.Label("Hình thức thi", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.HinhThucThi, new { @class = "form-control", required = "true" })
+                        @Html.TextBoxFor(model => model.HinhThucThi, new { @class = "form-control" })
                     </div>
                 </div>
 
@@ -99,3 +127,9 @@
     </div>
 </div>
 
+<script>
+    $("[name=@nameof(Model.LHDT)]").val('@Model.LHDT');
+    $("[name=@nameof(Model.MaMH)]").val('@Model.MaMH');
+    $("[name=@nameof(Model.Kip)]").val('@Model.Kip');
+    $("[name=@nameof(Model.DiaDiem)]").val('@Model.DiaDiem');
+</script>

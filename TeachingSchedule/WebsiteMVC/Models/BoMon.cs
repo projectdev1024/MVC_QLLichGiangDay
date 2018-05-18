@@ -17,6 +17,7 @@ namespace WebsiteMVC.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public BoMon()
         {
+            this.GVs = new HashSet<GV>();
             this.MonHocs = new HashSet<MonHoc>();
         }
     
@@ -24,6 +25,8 @@ namespace WebsiteMVC.Models
         public string TenBoMon { get; set; }
         public Nullable<bool> Active { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<GV> GVs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MonHoc> MonHocs { get; set; }
     }

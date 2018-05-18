@@ -31,11 +31,15 @@ namespace WebsiteMVC.Controllers
         public ActionResult Detail(int id, int? tab)
         {
             ViewBag.tab = tab;
-            return View(new TeachingScheduleEntities().GVs.FirstOrDefault(q => q.MaGV == id));
+            var db = new TeachingScheduleEntities();
+            ViewBag.MaBoMons = db.BoMons.Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon);
+            return View(db.GVs.FirstOrDefault(q => q.MaGV == id));
         }
 
         public ActionResult Create()
         {
+            var db = new TeachingScheduleEntities();
+            ViewBag.MaBoMons = db.BoMons.Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon);
             return View(new GV());
         }
 
@@ -44,6 +48,7 @@ namespace WebsiteMVC.Controllers
             var db = new TeachingScheduleEntities();
             var ob = new TeachingScheduleEntities().GVs.FirstOrDefault(q => q.MaGV == (id ?? 0));
             if (ob == null) return RedirectToAction("Index");
+            ViewBag.MaBoMons = db.BoMons.Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, ob.MaBoMon);
             return View(ob);
         }
 

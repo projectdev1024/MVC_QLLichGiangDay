@@ -26,23 +26,37 @@
                         <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
-                                    <th>Chọn</th>
                                     <th>Giáo viên</th>
-                                    <th>Thứ</th>
+                                    <th>Lớp </th>
                                     <th>Tiết</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in MaLichGD2s)
+                                @foreach (var gr in MaLichGD2s.GroupBy(q => q.PCGD.MaGV))
                                 {
+                                    var grbylop = gr.GroupBy(q => q.PCGD.MaHP);
                                     <tr>
-                                        <td>
-                                            <label>@Html.RadioButtonFor(q => q.MaLichGD2, item.MaLichGD) Chọn</label>
-                                        </td>
-                                        <td>@(item.PCGD?.GV.HoTen)</td>
-                                        <td>@item.Thu</td>
-                                        <td>@item.Tiet</td>
+                                        <td rowspan="@(gr.Count() + grbylop.Count() + 2)">@gr.First().PCGD.GV.HoTen</td>
+                                        <td colspan="2" style="display: none"></td>
                                     </tr>
+                                    foreach (var gr_lop in grbylop)
+                                    {
+                                        <tr>
+                                            <td rowspan="@(gr_lop.Count() + 1)">
+                                                @gr_lop.First().PCGD.LopHP.MonHoc.TenMonHoc -
+                                                @gr_lop.First().PCGD.LopHP.TenLop
+                                            </td>
+                                            <td style="display: none"></td>
+                                        </tr>
+                                        foreach (var item in gr_lop)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <label>@Html.RadioButtonFor(q => q.MaLichGD2, item.MaLichGD) Thứ @item.Thu  - tiết @item.Tiet</label>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
                                 }
                             </tbody>
                         </table>

@@ -9,7 +9,7 @@ namespace WebsiteMVC.Models
     {
         public DMG DMG { get; set; }
         public int TaiTT { get; set; }
-        public int TaiNV { get => (DMG.TongDMG * DMG.TongHeSo / 100) ?? 0; }
+        public int TaiNV { get => DMG.TongDMG ?? 0; }
         public int TaiVuot { get => TaiTT - TaiNV; }
     }
 }

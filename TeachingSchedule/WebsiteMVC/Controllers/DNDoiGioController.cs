@@ -47,7 +47,7 @@ namespace WebsiteMVC.Controllers
             {
                 obj = db.DNDoiGios.Find(id);
             }
-            ViewBag.MaLichGD2s = db.LichGDs.Where(q => q.Status != "DELETE" && q.PCGD.MaGV != obj.LichGD.PCGD.MaGV).ToList();
+            ViewBag.MaLichGD2s = db.LichGDs.Where(q => q.Status != "DELETE" && q.PCGD.GV.MaBoMon == Account.MaBoMon && q.PCGD.MaGV != obj.LichGD.PCGD.MaGV).ToList();
             return View(obj);
         }
 
@@ -68,15 +68,15 @@ namespace WebsiteMVC.Controllers
             dicReplace.Add("<HocKi>", obj.LichGD.PCGD.LopHP.NamHoc.KyHoc);
             dicReplace.Add("<NamHoc>", obj.LichGD.PCGD.LopHP.NamHoc.NamHoc1);
 
-            var pcgd2 = db.LichGDs.Find(obj.MaLichGD2);
-            dicReplace.Add("<GV2>", pcgd2.PCGD.GV.HoTen);
-            dicReplace.Add("<HocHam2>", pcgd2.PCGD.LopHP.NamHoc.DMGs.FirstOrDefault()?.HocHam.TenHocHam);
-            dicReplace.Add("<BoMon2>", pcgd2.PCGD.LopHP.MonHoc.BoMon.TenBoMon);
-            dicReplace.Add("<Mon2>", pcgd2.PCGD.LopHP.MonHoc.TenMonHoc);
-            dicReplace.Add("<lop2>", pcgd2.PCGD.LopHP.TenLop);
+            var lich2 = obj.LichGD2;
+            dicReplace.Add("<GV2>", lich2.PCGD.GV.HoTen);
+            dicReplace.Add("<HocHam2>", lich2.PCGD.LopHP.NamHoc.DMGs.FirstOrDefault()?.HocHam.TenHocHam);
+            dicReplace.Add("<BoMon2>", lich2.PCGD.LopHP.MonHoc.BoMon.TenBoMon);
+            dicReplace.Add("<Mon2>", lich2.PCGD.LopHP.MonHoc.TenMonHoc);
+            dicReplace.Add("<lop2>", lich2.PCGD.LopHP.TenLop);
             dicReplace.Add("<LichDoiGio>", $@"
                 GV đề nghị: {gvdn.HoTen} - Môn học: {obj.LichGD.PCGD.LopHP.MonHoc.TenMonHoc} - Thứ: {obj.LichGD.Thu} - Tiết: {obj.LichGD.Tiet} 
-                GV được đề nghị: {pcgd2.PCGD.GV.HoTen} - Môn học: {pcgd2.PCGD.LopHP.MonHoc.TenMonHoc} -Thứ: {pcgd2.Thu} - Tiết: {pcgd2.Tiet}");
+                GV được đề nghị: {lich2.PCGD.GV.HoTen} - Môn học: {lich2.PCGD.LopHP.MonHoc.TenMonHoc} -Thứ: {lich2.Thu} - Tiết: {lich2.Tiet}");
 
             dicReplace.Add("<dd>", DateTime.Now.Day.ToString());
             dicReplace.Add("<mm>", DateTime.Now.Month.ToString());
@@ -88,7 +88,7 @@ namespace WebsiteMVC.Controllers
                 // Replace text in this document.
                 foreach (var item in dicReplace)
                 {
-                    document.ReplaceText(item.Key, item.Value +"");
+                    document.ReplaceText(item.Key, item.Value + "");
                 }
 
                 // Save changes made to this document.
@@ -103,7 +103,6 @@ namespace WebsiteMVC.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Edit(DNDoiGio obj)
         {
             if (obj.MaDN > 0)

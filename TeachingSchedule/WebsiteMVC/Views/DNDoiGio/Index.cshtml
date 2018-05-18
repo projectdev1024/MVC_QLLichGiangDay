@@ -28,15 +28,16 @@
                 <tr>
                     <th>Ngày tạo</th>
                     <th>Giáo viên đề nghị</th>
-                    <th>Lớp</th>
-                    <th>Thứ</th>
-                    <th>Tiết</th>
+                    <th>Lịch đề nghị</th>
+                    <th>Giáo viên được đề nghị</th>
+                    <th>Lịch được đề nghị</th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var item in Model)
                 {
+                    var lich2 = item.LichGD2;
                 <tr>
                     <td>
                         @Html.DisplayFor(modelItem => item.NgayTao)
@@ -46,12 +47,18 @@
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.LichGD.PCGD.LopHP.TenLop)
+                        - @item.LichGD.PCGD.LopHP.MonHoc.TenMonHoc
+                        - Thứ @Html.DisplayFor(modelItem => item.LichGD.Thu)
+                        - Tiết @Html.DisplayFor(modelItem => item.LichGD.Tiet)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LichGD.Thu)
+                        @lich2.PCGD.GV.HoTen
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.LichGD.Tiet)
+                        @lich2.PCGD.LopHP.TenLop
+                        - @lich2.PCGD.LopHP.MonHoc.TenMonHoc
+                        - Thứ @lich2.Thu
+                        - Tiết @lich2.Tiet
                     </td>
                     <td>
                         <a href="@Url.Action("Export",new { id = item.MaDN})" class="btn btn-primary"><i class="fa fa-file-word-o"></i> Đơn</a>

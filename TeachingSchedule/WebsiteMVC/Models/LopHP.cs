@@ -38,6 +38,7 @@ namespace WebsiteMVC.Models
         public Nullable<double> HeSoDD { get; set; }
         public Nullable<double> TongHeSo { get; set; }
         public Nullable<int> SoTietQuyChuan { get; set; }
+        public string MaHocPhan { get; set; }
     
         public virtual MonHoc MonHoc { get; set; }
         public virtual NamHoc NamHoc { get; set; }

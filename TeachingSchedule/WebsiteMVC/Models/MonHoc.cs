@@ -24,6 +24,7 @@ namespace WebsiteMVC.Models
         public string TenMonHoc { get; set; }
         public Nullable<int> MaBoMon { get; set; }
         public Nullable<bool> Active { get; set; }
+        public string M { get; set; }
     
         public virtual BoMon BoMon { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

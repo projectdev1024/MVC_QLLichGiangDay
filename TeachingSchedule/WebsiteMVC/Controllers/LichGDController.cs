@@ -20,7 +20,7 @@ namespace WebsiteMVC.Controllers
 
         private TeachingScheduleEntities db = new TeachingScheduleEntities();
 
-        public ActionResult TKB(int? MaGV, int? IDNamHoc, int? exportExcel = 0)
+        public ActionResult TKB(int? MaGV, int? IDNamHoc, int? IDBoMon, int? exportExcel = 0)
         {
             var lstGV = new List<GV>();
             if (Account.QuyenHan == "GiangVien")
@@ -40,7 +40,14 @@ namespace WebsiteMVC.Controllers
             var namhoc = db.NamHocs.Find(IDNamHoc);
             ViewBag.NamHoc = namhoc;
 
+            var bomon = db.BoMons.Where(q => q.Active != false);
+            ViewBag.IDBoMons = bomon.CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, IDBoMon);
+
             var lstGD = db.LichGDs.Where(q => q.PCGD.LopHP.IDNamHoc == IDNamHoc).ToList();
+            if (IDBoMon.HasValue)
+            {
+                lstGD = lstGD.Where(q => q.PCGD.LopHP.MonHoc.MaBoMon == IDBoMon).ToList();
+            }
             if (MaGV.HasValue) lstGD = lstGD.Where(q => q.PCGD.MaGV == MaGV).ToList();
             if (exportExcel == 1)
             {
@@ -68,7 +75,6 @@ namespace WebsiteMVC.Controllers
             return View(lst);
         }
 
-
         // GET: AdminCP/LichGD/Edit/5
         public ActionResult Edit(int? id, int? MaPCGD)
         {
@@ -77,8 +83,11 @@ namespace WebsiteMVC.Controllers
             {
                 lichGD = new LichGD()
                 {
-                    MaPCGD = MaPCGD
+                    MaPCGD = MaPCGD,
+                    PCGD = db.PCGDs.Find(MaPCGD)
                 };
+                lichGD.NgayBD = lichGD.PCGD.LopHP.NamHoc.BatDau;
+                lichGD.NgayKT = lichGD.PCGD.LopHP.NamHoc.KetThuc;
             }
             else
             {
@@ -99,7 +108,7 @@ namespace WebsiteMVC.Controllers
                 db.LichGDs.Add(lichGD);
             }
             db.SaveChanges();
-            return RedirectToAction("Index", new { MaPCGD = lichGD.MaPCGD });
+            return RedirectToAction("Index", "LopHP", new { MaPCGD = lichGD.MaPCGD });
         }
 
         public JsonResult Delete(int id)

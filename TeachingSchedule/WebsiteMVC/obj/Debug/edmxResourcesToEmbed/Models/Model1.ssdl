@@ -73,6 +73,7 @@
     <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
     <Property Name="QuyenHan" Type="nvarchar" MaxLength="50" />
     <Property Name="Active" Type="bit" />
+    <Property Name="MaBoMon" Type="int" />
   </EntityType>
   <EntityType Name="HocHam">
     <Key>
@@ -118,6 +119,7 @@
     <Property Name="HeSoDD" Type="float" />
     <Property Name="TongHeSo" Type="float" />
     <Property Name="SoTietQuyChuan" Type="int" />
+    <Property Name="MaHocPhan" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="MonHoc">
     <Key>
@@ -127,6 +129,7 @@
     <Property Name="TenMonHoc" Type="nvarchar" MaxLength="50" />
     <Property Name="MaBoMon" Type="int" />
     <Property Name="Active" Type="bit" />
+    <Property Name="M" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="NamHoc">
     <Key>
@@ -269,6 +272,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_GV_BoMon">
+    <End Role="BoMon" Type="Self.BoMon" Multiplicity="0..1" />
+    <End Role="GV" Type="Self.GV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoMon">
+        <PropertyRef Name="MaBoMon" />
+      </Principal>
+      <Dependent Role="GV">
+        <PropertyRef Name="MaBoMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_LichGD_PCGD">
     <End Role="PCGD" Type="Self.PCGD" Multiplicity="0..1" />
     <End Role="LichGD" Type="Self.LichGD" Multiplicity="*" />
@@ -400,6 +415,10 @@
     <AssociationSet Name="FK_DNDoiGV_PCGD" Association="Self.FK_DNDoiGV_PCGD">
       <End Role="PCGD" EntitySet="PCGD" />
       <End Role="DNDoiGV" EntitySet="DNDoiGV" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GV_BoMon" Association="Self.FK_GV_BoMon">
+      <End Role="BoMon" EntitySet="BoMon" />
+      <End Role="GV" EntitySet="GV" />
     </AssociationSet>
     <AssociationSet Name="FK_LichGD_PCGD" Association="Self.FK_LichGD_PCGD">
       <End Role="PCGD" EntitySet="PCGD" />

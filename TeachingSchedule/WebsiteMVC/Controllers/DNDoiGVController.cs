@@ -91,7 +91,7 @@ namespace WebsiteMVC.Controllers
             {
                 obj = db.DNDoiGVs.Find(id);
             }
-            ViewBag.MaGVs = db.GVs.Where(q => q.Active != false && q.MaGV != obj.PCGD.MaGV).CreateSelectList(q => q.MaGV, q => q.HoTen);
+            ViewBag.MaGVs = db.GVs.Where(q => q.Active != false && q.MaGV != obj.PCGD.MaGV && q.MaBoMon == Account.MaBoMon).CreateSelectList(q => q.MaGV, q => q.HoTen);
             return View(obj);
         }
 

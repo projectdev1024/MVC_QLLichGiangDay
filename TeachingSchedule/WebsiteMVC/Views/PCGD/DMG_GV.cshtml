@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WebsiteMVC.Models.DMG_GV>
 
-<h3>TẢI GIẢNG DẠY</h3>
+<h3>@ViewBag.bomon</h3>
 <table class="table table-bordered">
     <thead>
         <tr>
@@ -18,7 +18,7 @@
         {
             <tr class="@(item.TaiVuot==0?"success": item.TaiVuot > 0 ? "warning":"need")">
                 <td>@item.DMG.GV.HoTen</td>
-                <td>@item.DMG.TongDMG</td>
+                <td>@item.DMG.HocHam.DMG</td>
                 <td>@item.DMG.TongHeSo %</td>
                 <td>@item.TaiNV</td>
                 <td>@item.TaiTT</td>

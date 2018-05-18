@@ -69,6 +69,7 @@
     <EntitySetMapping Name="GVs">
       <EntityTypeMapping TypeName="TeachingScheduleModel.GV">
         <MappingFragment StoreEntitySet="GV">
+          <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="QuyenHan" ColumnName="QuyenHan" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
@@ -109,6 +110,7 @@
     <EntitySetMapping Name="LopHPs">
       <EntityTypeMapping TypeName="TeachingScheduleModel.LopHP">
         <MappingFragment StoreEntitySet="LopHP">
+          <ScalarProperty Name="MaHocPhan" ColumnName="MaHocPhan" />
           <ScalarProperty Name="SoTietQuyChuan" ColumnName="SoTietQuyChuan" />
           <ScalarProperty Name="TongHeSo" ColumnName="TongHeSo" />
           <ScalarProperty Name="HeSoDD" ColumnName="HeSoDD" />
@@ -133,6 +135,7 @@
     <EntitySetMapping Name="MonHocs">
       <EntityTypeMapping TypeName="TeachingScheduleModel.MonHoc">
         <MappingFragment StoreEntitySet="MonHoc">
+          <ScalarProperty Name="M" ColumnName="M" />
           <ScalarProperty Name="Active" ColumnName="Active" />
           <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
           <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />

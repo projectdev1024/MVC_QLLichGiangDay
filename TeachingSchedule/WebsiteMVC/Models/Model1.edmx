@@ -78,6 +78,7 @@
           <Property Name="MatKhau" Type="nvarchar" MaxLength="50" />
           <Property Name="QuyenHan" Type="nvarchar" MaxLength="50" />
           <Property Name="Active" Type="bit" />
+          <Property Name="MaBoMon" Type="int" />
         </EntityType>
         <EntityType Name="HocHam">
           <Key>
@@ -123,6 +124,7 @@
           <Property Name="HeSoDD" Type="float" />
           <Property Name="TongHeSo" Type="float" />
           <Property Name="SoTietQuyChuan" Type="int" />
+          <Property Name="MaHocPhan" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="MonHoc">
           <Key>
@@ -132,6 +134,7 @@
           <Property Name="TenMonHoc" Type="nvarchar" MaxLength="50" />
           <Property Name="MaBoMon" Type="int" />
           <Property Name="Active" Type="bit" />
+          <Property Name="M" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="NamHoc">
           <Key>
@@ -274,6 +277,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_GV_BoMon">
+          <End Role="BoMon" Type="Self.BoMon" Multiplicity="0..1" />
+          <End Role="GV" Type="Self.GV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoMon">
+              <PropertyRef Name="MaBoMon" />
+            </Principal>
+            <Dependent Role="GV">
+              <PropertyRef Name="MaBoMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_LichGD_PCGD">
           <End Role="PCGD" Type="Self.PCGD" Multiplicity="0..1" />
           <End Role="LichGD" Type="Self.LichGD" Multiplicity="*" />
@@ -406,6 +421,10 @@
             <End Role="PCGD" EntitySet="PCGD" />
             <End Role="DNDoiGV" EntitySet="DNDoiGV" />
           </AssociationSet>
+          <AssociationSet Name="FK_GV_BoMon" Association="Self.FK_GV_BoMon">
+            <End Role="BoMon" EntitySet="BoMon" />
+            <End Role="GV" EntitySet="GV" />
+          </AssociationSet>
           <AssociationSet Name="FK_LichGD_PCGD" Association="Self.FK_LichGD_PCGD">
             <End Role="PCGD" EntitySet="PCGD" />
             <End Role="LichGD" EntitySet="LichGD" />
@@ -455,6 +474,10 @@
           <EntitySet Name="NCKHs" EntityType="TeachingScheduleModel.NCKH" />
           <EntitySet Name="PCGDs" EntityType="TeachingScheduleModel.PCGD" />
           <EntitySet Name="sysdiagrams" EntityType="TeachingScheduleModel.sysdiagram" />
+          <AssociationSet Name="FK_GV_BoMon" Association="TeachingScheduleModel.FK_GV_BoMon">
+            <End Role="BoMon" EntitySet="BoMons" />
+            <End Role="GV" EntitySet="GVs" />
+          </AssociationSet>
           <AssociationSet Name="FK_MonHoc_BoMon" Association="TeachingScheduleModel.FK_MonHoc_BoMon">
             <End Role="BoMon" EntitySet="BoMons" />
             <End Role="MonHoc" EntitySet="MonHocs" />
@@ -523,6 +546,7 @@
           <Property Name="MaBoMon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TenBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" />
+          <NavigationProperty Name="GVs" Relationship="TeachingScheduleModel.FK_GV_BoMon" FromRole="BoMon" ToRole="GV" />
           <NavigationProperty Name="MonHocs" Relationship="TeachingScheduleModel.FK_MonHoc_BoMon" FromRole="BoMon" ToRole="MonHoc" />
         </EntityType>
         <EntityType Name="ChucVu">
@@ -600,6 +624,8 @@
           <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="QuyenHan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" />
+          <Property Name="MaBoMon" Type="Int32" />
+          <NavigationProperty Name="BoMon" Relationship="TeachingScheduleModel.FK_GV_BoMon" FromRole="GV" ToRole="BoMon" />
           <NavigationProperty Name="DMGs" Relationship="TeachingScheduleModel.FK_DMG_GV" FromRole="GV" ToRole="DMG" />
           <NavigationProperty Name="DNDoiGVs" Relationship="TeachingScheduleModel.FK_DNDoiGV_GV" FromRole="GV" ToRole="DNDoiGV" />
           <NavigationProperty Name="NCKHs" Relationship="TeachingScheduleModel.FK_NCKH_GV" FromRole="GV" ToRole="NCKH" />
@@ -652,6 +678,7 @@
           <Property Name="HeSoDD" Type="Double" />
           <Property Name="TongHeSo" Type="Double" />
           <Property Name="SoTietQuyChuan" Type="Int32" />
+          <Property Name="MaHocPhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="MonHoc" Relationship="TeachingScheduleModel.FK_LopHP_MonHoc" FromRole="LopHP" ToRole="MonHoc" />
           <NavigationProperty Name="NamHoc" Relationship="TeachingScheduleModel.FK_LopHP_NamHoc" FromRole="LopHP" ToRole="NamHoc" />
           <NavigationProperty Name="PCGDs" Relationship="TeachingScheduleModel.FK_PCGD_LopHP" FromRole="LopHP" ToRole="PCGD" />
@@ -664,6 +691,7 @@
           <Property Name="TenMonHoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaBoMon" Type="Int32" />
           <Property Name="Active" Type="Boolean" />
+          <Property Name="M" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="BoMon" Relationship="TeachingScheduleModel.FK_MonHoc_BoMon" FromRole="MonHoc" ToRole="BoMon" />
           <NavigationProperty Name="LopHPs" Relationship="TeachingScheduleModel.FK_LopHP_MonHoc" FromRole="MonHoc" ToRole="LopHP" />
         </EntityType>
@@ -719,6 +747,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_GV_BoMon">
+          <End Type="TeachingScheduleModel.BoMon" Role="BoMon" Multiplicity="0..1" />
+          <End Type="TeachingScheduleModel.GV" Role="GV" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BoMon">
+              <PropertyRef Name="MaBoMon" />
+            </Principal>
+            <Dependent Role="GV">
+              <PropertyRef Name="MaBoMon" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MonHoc_BoMon">
           <End Type="TeachingScheduleModel.BoMon" Role="BoMon" Multiplicity="0..1" />
           <End Type="TeachingScheduleModel.MonHoc" Role="MonHoc" Multiplicity="*" />
@@ -973,6 +1013,7 @@
           <EntitySetMapping Name="GVs">
             <EntityTypeMapping TypeName="TeachingScheduleModel.GV">
               <MappingFragment StoreEntitySet="GV">
+                <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="QuyenHan" ColumnName="QuyenHan" />
                 <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
@@ -1013,6 +1054,7 @@
           <EntitySetMapping Name="LopHPs">
             <EntityTypeMapping TypeName="TeachingScheduleModel.LopHP">
               <MappingFragment StoreEntitySet="LopHP">
+                <ScalarProperty Name="MaHocPhan" ColumnName="MaHocPhan" />
                 <ScalarProperty Name="SoTietQuyChuan" ColumnName="SoTietQuyChuan" />
                 <ScalarProperty Name="TongHeSo" ColumnName="TongHeSo" />
                 <ScalarProperty Name="HeSoDD" ColumnName="HeSoDD" />
@@ -1037,6 +1079,7 @@
           <EntitySetMapping Name="MonHocs">
             <EntityTypeMapping TypeName="TeachingScheduleModel.MonHoc">
               <MappingFragment StoreEntitySet="MonHoc">
+                <ScalarProperty Name="M" ColumnName="M" />
                 <ScalarProperty Name="Active" ColumnName="Active" />
                 <ScalarProperty Name="MaBoMon" ColumnName="MaBoMon" />
                 <ScalarProperty Name="TenMonHoc" ColumnName="TenMonHoc" />

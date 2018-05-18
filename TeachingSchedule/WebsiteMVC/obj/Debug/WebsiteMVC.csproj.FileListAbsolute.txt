@@ -97,55 +97,160 @@ D:\FLANCER\C#\WEB\TeachingSchedule\WebsiteMVC\bin\DocumentFormat.OpenXml.dll
 D:\FLANCER\C#\WEB\TeachingSchedule\WebsiteMVC\bin\ClosedXML.pdb
 D:\FLANCER\C#\WEB\TeachingSchedule\WebsiteMVC\bin\ClosedXML.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\WebsiteMVC\bin\Rotativa.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ApplicationInsights.config
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll.config
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.pdb
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ClosedXML.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\DocumentFormat.OpenXml.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Agent.Intercept.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.PerfCounterCollector.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.Web.Infrastructure.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Rotativa.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebGrease.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Xceed.Words.NET.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ClosedXML.pdb
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ClosedXML.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.pdb
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csprojResolveAssemblyReference.cache
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\ApplicationInsights.config
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll.config
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.pdb
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\ClosedXML.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\DocumentFormat.OpenXml.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\EntityFramework.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Rotativa.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\WebGrease.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Xceed.Words.NET.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\ClosedXML.pdb
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\ClosedXML.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\EntityFramework.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.pdb
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.xml
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csprojResolveAssemblyReference.cache
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CopyComplete
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
+C:\Users\phamt\Desktop\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ApplicationInsights.config
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll.config
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.pdb
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ClosedXML.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\DocumentFormat.OpenXml.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Rotativa.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebGrease.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Xceed.Words.NET.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ClosedXML.pdb
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ClosedXML.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.pdb
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.xml
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
+C:\Users\DELL\Desktop\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ApplicationInsights.config
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll.config
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.pdb
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ClosedXML.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\DocumentFormat.OpenXml.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Rotativa.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\WebGrease.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Xceed.Words.NET.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ClosedXML.pdb
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\ClosedXML.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Mvc.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Optimization.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.Razor.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Deployment.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\System.Web.WebPages.Razor.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Antlr3.Runtime.pdb
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Newtonsoft.Json.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.ApplicationInsights.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.xml
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
+C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb

@@ -1,10 +1,10 @@
-﻿@model IEnumerable<WebsiteMVC.Models.LichGD>
+﻿@using WebsiteMVC.Models
+@model IEnumerable<WebsiteMVC.Models.LichGD>
 
 @{
     var pcgd = ViewBag.PCGD as WebsiteMVC.Models.PCGD;
     ViewBag.Title = $"LỊCH GIẢNG DẠY - LỚP {pcgd.LopHP.TenLop} - GV: {pcgd.GV.HoTen}";
-    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
-    var per = WebsiteMVC.Models.LoginHelper.IsRole();
+    var per = WebsiteMVC.Models.LoginHelper.IsRole(eRole.Admin, eRole.CanBoQuanLy);
 }
 
 <div class="portlet box blue">

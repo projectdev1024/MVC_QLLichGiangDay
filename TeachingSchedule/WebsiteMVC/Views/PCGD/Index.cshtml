@@ -45,7 +45,7 @@
 
                 @foreach (var item in Model)
                 {
-                    <tr>
+                    <tr style="background-color: @(item.LichGDs.Count > 0 ?"#74aed6":"none")">
                         <td>
                             @Html.DisplayFor(modelItem => item.LopHP.TenLop)
                         </td>
@@ -57,10 +57,13 @@
                         </td>
 
                         <td>
-                            <a href="@Url.Action("Index","LichGD",new { MaPCGD = item.MaPCGD})" class="btn btn-primary"><i class="fa fa-info"></i> Lịch GD</a>
-                            <a href="@Url.Action("Edit","DNDoiGV",new { MaPCGD = item.MaPCGD })" id="sample_editable_1_new" class="btn green">
-                                <i class="fa fa-plus"></i> ĐN đổi giáo viên
-                            </a>
+                            <span onclick="lichgd('@item.MaPCGD')" class="btn btn-warning"><i class="fa fa-info"></i> Lịch GD</span>
+                            @if (item.MaGV == WebsiteMVC.Models.LoginHelper.GetAccount().MaGV)
+                            {
+                                <a href="@Url.Action("Edit","DNDoiGV",new { MaPCGD = item.MaPCGD })" id="sample_editable_1_new" class="btn green">
+                                    <i class="fa fa-plus"></i> ĐN đổi giáo viên
+                                </a>
+                            }
                             @if (per)
                             {
                                 <a href="@Url.Action("Edit",new { id = item.MaPCGD})" class="btn btn-primary"><i class="fa fa-pencil"></i> Sửa</a>
@@ -71,5 +74,22 @@
                 }
             </tbody>
         </table>
+        <hr />
+        <div id="lichgd">
+            *** Click Lịch GD để xem lịch giảng dạy.
+        </div>
     </div>
 </div>
+
+<script>
+    function lichgd(MaPCGD){
+         $.ajax({
+                    url: "@Url.Action("Index", "LichGD")",
+                    type: "POST",
+             data: { MaPCGD: MaPCGD },
+                    success: function (d) {
+                        $('#lichgd').html(d);
+                    }
+                })
+    }
+</script>

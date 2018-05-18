@@ -33,7 +33,9 @@ namespace WebsiteMVC.Models
         public string MatKhau { get; set; }
         public string QuyenHan { get; set; }
         public Nullable<bool> Active { get; set; }
+        public Nullable<int> MaBoMon { get; set; }
     
+        public virtual BoMon BoMon { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DMG> DMGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

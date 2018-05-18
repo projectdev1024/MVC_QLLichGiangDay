@@ -25,7 +25,13 @@ namespace WebsiteMVC.Controllers
         public ActionResult DMG_GV(int? IDNamHoc)
         {
             var lst = new List<DMG_GV>();
-            var dmg = db.DMGs.Where(q => q.IDNamHoc == IDNamHoc && q.Active != false).ToList();
+            var dmg = db.DMGs.Where(q => q.IDNamHoc == IDNamHoc && q.Active != false && q.GV.MaBoMon == Account.MaBoMon).ToList();
+            if (Account.QuyenHan == "CanBoQuanLy")
+            {
+                dmg = dmg.Where(q => q.GV.MaBoMon == Account.MaBoMon).ToList();
+                ViewBag.bomon = $"TẢI GIẢNG DẠY - BỘ MÔN {Account.BoMon.TenBoMon}";
+            }
+            else ViewBag.bomon = $"TẢI GIẢNG DẠY - TẤT CẢ BỘ MÔN";
 
             foreach (var item in dmg)
             {
@@ -54,7 +60,9 @@ namespace WebsiteMVC.Controllers
             {
                 pCGD = db.PCGDs.Find(id);
             }
-            ViewBag.MaGVs = new SelectList(db.GVs, "MaGV", "HoTen", pCGD.MaGV);
+
+            var mabm = LoginHelper.GetAccount().MaBoMon;
+            ViewBag.MaGVs = db.GVs.Where(q => q.MaBoMon == mabm).CreateSelectList(q => q.MaGV, q => q.HoTen, pCGD.MaGV);
             return View(pCGD);
         }
 

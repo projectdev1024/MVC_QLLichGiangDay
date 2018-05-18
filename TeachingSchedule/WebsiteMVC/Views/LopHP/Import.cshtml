@@ -10,32 +10,46 @@
         @using (Html.BeginForm("Import", "LopHP", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
-            <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.Label("Năm học", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.DropDownList("IDNamHoc", ViewBag.IDNamHocs as SelectList, "Vui lòng chọn", new { @class = "form-control", required = "true" })
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-10 col-md-offset-2">
-                        <p>Chọn file excel (.xlsx)</p>
-                        <input type="file" name="excel" value="" />
-                        <p>
-                            Sheet: <input type="number" name="sheet" value="1" />
-                        </p>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn green" />
-                        <a href="@Url.Action("Index")" class="btn btn-default"><i class="fa fa-list"></i> DANH SÁCH LỚP HỌC PHẦN</a>
-                    </div>
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.Label("Năm học", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("IDNamHoc", ViewBag.IDNamHocs as SelectList, "Vui lòng chọn", new { @class = "form-control", required = "true" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.Label("LHDT", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <select name="LHDT" required class="form-control">
+                        <option value="">Vui lòng chọn</option>
+                        <option value="DH">DH</option>
+                        <option value="CH">CH</option>
+                        <option value="LT">LT</option>
+                        <option value="CD">CD</option>
+                        <option value="AT">AT</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-10 col-md-offset-2">
+                    <p>Chọn file excel (.xlsx)</p>
+                    <input type="file" name="excel" value="" />
+                    <p>
+                        Sheet: <input type="number" name="sheet" value="1" />
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn green" />
+                    <a href="@Url.Action("Index")" class="btn btn-default"><i class="fa fa-list"></i> DANH SÁCH LỚP HỌC PHẦN</a>
+                </div>
+            </div>
+        </div>
         }
     </div>
 </div>
