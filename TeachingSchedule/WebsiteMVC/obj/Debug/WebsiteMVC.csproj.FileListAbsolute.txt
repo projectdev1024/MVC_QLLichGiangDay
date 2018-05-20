@@ -254,6 +254,7 @@ C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\o
 C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
 C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
 C:\Users\DELL\Desktop\New folder\TeachingSchedule6\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb
+D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ApplicationInsights.config
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll.config
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebsiteMVC.dll
@@ -285,7 +286,6 @@ D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\WebGrease.dll
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Xceed.Words.NET.dll
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ClosedXML.pdb
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\ClosedXML.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\EntityFramework.SqlServer.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\System.Web.Helpers.xml
@@ -302,7 +302,6 @@ D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.ServerTelemetryChannel.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.WindowsServer.xml
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.Web.xml
-D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csprojResolveAssemblyReference.cache
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb

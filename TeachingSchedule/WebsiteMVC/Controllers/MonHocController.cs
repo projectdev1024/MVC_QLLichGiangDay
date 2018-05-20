@@ -20,8 +20,9 @@ namespace WebsiteMVC.Controllers
         public ActionResult Edit(int? id)
         {
             var db = new TeachingScheduleEntities();
-            ViewBag.BoMons = db.BoMons.ToList().Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon);
-            return View(new TeachingScheduleEntities().MonHocs.ToList().FirstOrDefault(q => q.MaMH == (id ?? 0) && q.Active != false));
+            var obj = id > 0 ? db.MonHocs.Find(id) : new MonHoc();
+            ViewBag.BoMons = db.BoMons.ToList().Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, obj.MaBoMon);
+            return View(obj);
         }
 
         [HttpPost]
