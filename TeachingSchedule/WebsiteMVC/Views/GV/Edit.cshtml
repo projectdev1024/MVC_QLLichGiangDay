@@ -64,6 +64,7 @@
                         @if (acc.QuyenHan != "Admin")
                         {
                             <b>@Model.BoMon.TenBoMon</b>
+                            @Html.HiddenFor(q => q.MaBoMon)
                         }
                         else
                         {
@@ -78,6 +79,7 @@
                         @if (acc.QuyenHan != "Admin")
                         {
                             <b>@Model.TenDangNhap</b>
+                            @Html.HiddenFor(q => q.TenDangNhap)
                         }
                         else
                         {
@@ -120,6 +122,7 @@
                                     <b>Giảng viên</b>
                                     break;
                             }
+                            @Html.HiddenFor(q => q.QuyenHan)
                         }
                         else
                         {

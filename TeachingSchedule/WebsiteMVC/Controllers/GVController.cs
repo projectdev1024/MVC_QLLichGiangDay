@@ -26,7 +26,7 @@ namespace WebsiteMVC.Controllers
                     lst = db.GVs.ToList().Where(q => q.Active != false).ToList();
                     break;
                 default:
-                    lst = db.GVs.ToList().Where(q => q.Active != false && q.MaBoMon == Account.MaBoMon).ToList();
+                    lst = db.GVs.ToList().Where(q => q.Active != false && q.MaBoMon == Account.MaBoMon && q.QuyenHan != "Admin").ToList();
                     break;
             }
             return View(lst);

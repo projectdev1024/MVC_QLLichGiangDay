@@ -305,3 +305,4 @@ D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\bin\Microsoft.AI.
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csproj.CoreCompileInputs.cache
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.dll
 D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.pdb
+D:\FLANCER\C#\WEB\TeachingSchedule\TeachingSchedule\WebsiteMVC\obj\Debug\WebsiteMVC.csprojResolveAssemblyReference.cache
