@@ -241,7 +241,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DNDoiGio_LichGD">
+        <Association Name="FK_DNDoiGio_LichGD1">
           <End Role="LichGD" Type="Self.LichGD" Multiplicity="0..1" />
           <End Role="DNDoiGio" Type="Self.DNDoiGio" Multiplicity="*" />
           <ReferentialConstraint>
@@ -409,7 +409,7 @@
             <End Role="NamHoc" EntitySet="NamHoc" />
             <End Role="DMG" EntitySet="DMG" />
           </AssociationSet>
-          <AssociationSet Name="FK_DNDoiGio_LichGD" Association="Self.FK_DNDoiGio_LichGD">
+          <AssociationSet Name="FK_DNDoiGio_LichGD1" Association="Self.FK_DNDoiGio_LichGD1">
             <End Role="LichGD" EntitySet="LichGD" />
             <End Role="DNDoiGio" EntitySet="DNDoiGio" />
           </AssociationSet>
@@ -502,7 +502,7 @@
             <End Role="NamHoc" EntitySet="NamHocs" />
             <End Role="DMG" EntitySet="DMGs" />
           </AssociationSet>
-          <AssociationSet Name="FK_DNDoiGio_LichGD" Association="TeachingScheduleModel.FK_DNDoiGio_LichGD">
+          <AssociationSet Name="FK_DNDoiGio_LichGD1" Association="TeachingScheduleModel.FK_DNDoiGio_LichGD1">
             <End Role="LichGD" EntitySet="LichGDs" />
             <End Role="DNDoiGio" EntitySet="DNDoiGios" />
           </AssociationSet>
@@ -594,7 +594,7 @@
           <Property Name="MaLichGD2" Type="Int32" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="LichGD" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD" FromRole="DNDoiGio" ToRole="LichGD" />
+          <NavigationProperty Name="LichGD" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD1" FromRole="DNDoiGio" ToRole="LichGD" />
         </EntityType>
         <EntityType Name="DNDoiGV">
           <Key>
@@ -653,7 +653,7 @@
           <Property Name="Thu" Type="Int32" />
           <Property Name="Tiet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DNDoiGios" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD" FromRole="LichGD" ToRole="DNDoiGio" />
+          <NavigationProperty Name="DNDoiGios" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD1" FromRole="LichGD" ToRole="DNDoiGio" />
           <NavigationProperty Name="PCGD" Relationship="TeachingScheduleModel.FK_LichGD_PCGD" FromRole="LichGD" ToRole="PCGD" />
         </EntityType>
         <EntityType Name="LopHP">
@@ -831,7 +831,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DNDoiGio_LichGD">
+        <Association Name="FK_DNDoiGio_LichGD1">
           <End Type="TeachingScheduleModel.LichGD" Role="LichGD" Multiplicity="0..1" />
           <End Type="TeachingScheduleModel.DNDoiGio" Role="DNDoiGio" Multiplicity="*" />
           <ReferentialConstraint>

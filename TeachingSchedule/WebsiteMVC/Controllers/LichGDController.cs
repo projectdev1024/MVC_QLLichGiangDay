@@ -22,6 +22,8 @@ namespace WebsiteMVC.Controllers
 
         public ActionResult TKB(int? MaGV, int? IDNamHoc, int? IDBoMon, int? exportExcel = 0)
         {
+
+            //giảng viên
             var lstGV = new List<GV>();
             if (Account.QuyenHan == "GiangVien")
             {
@@ -30,25 +32,35 @@ namespace WebsiteMVC.Controllers
             }
             else
             {
-                lstGV = db.GVs.Where(q => q.Active != false).ToList();
+                lstGV = db.GVs.Where(q => q.Active != false && q.MaBoMon == Account.MaBoMon).ToList();
             }
-            var IDNamHocs = db.NamHocs.Where(q => q.Active != false).ToList();
-
             ViewBag.MaGVs = lstGV.CreateSelectList(q => q.MaGV, q => q.HoTen, MaGV);
+
+            //năm học
+            var IDNamHocs = db.NamHocs.Where(q => q.Active != false).OrderByDescending(q => q.KetThuc).ToList();
             if (IDNamHoc == null) IDNamHoc = IDNamHocs.FirstOrDefault()?.IDNamHoc;
             ViewBag.IDNamHocs = IDNamHocs.CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, IDNamHoc);
             var namhoc = db.NamHocs.Find(IDNamHoc);
             ViewBag.NamHoc = namhoc;
 
-            var bomon = db.BoMons.Where(q => q.Active != false);
+            //bộ môn
+            var bomon = db.BoMons.Where(q => q.Active != false && q.MaBoMon == Account.MaBoMon);
             ViewBag.IDBoMons = bomon.CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, IDBoMon);
 
+            //get data
             var lstGD = db.LichGDs.Where(q => q.PCGD.LopHP.IDNamHoc == IDNamHoc).ToList();
             if (IDBoMon.HasValue)
             {
                 lstGD = lstGD.Where(q => q.PCGD.LopHP.MonHoc.MaBoMon == IDBoMon).ToList();
             }
             if (MaGV.HasValue) lstGD = lstGD.Where(q => q.PCGD.MaGV == MaGV).ToList();
+
+            //check quyền
+            if(Account.QuyenHan != "Admin")
+            {
+                lstGD = lstGD.Where(q => q.PCGD.LopHP.MonHoc.MaBoMon == Account.MaBoMon).ToList();
+            }
+
             if (exportExcel == 1)
             {
                 return new PartialViewAsPdf("TKBPartial", lstGD)
@@ -99,6 +111,12 @@ namespace WebsiteMVC.Controllers
         [HttpPost]
         public ActionResult Edit(LichGD lichGD)
         {
+            if (lichGD.NgayBD >= lichGD.NgayKT)
+            {
+                ModelState.AddModelError("", "Vui lòng nhập thời gian hợp lệ!");
+                return View(lichGD);
+            }
+
             if (lichGD.MaLichGD > 0)
             {
                 db.Entry(lichGD).State = EntityState.Modified;

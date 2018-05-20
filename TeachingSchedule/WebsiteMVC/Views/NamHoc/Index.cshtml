@@ -54,7 +54,7 @@
                         <td>
                             @Html.DisplayFor(modelItem => item.KyHoc)
                         </td>
-                        <td>@(item.BatDau?.ToString("dd/MM/yyyy")) - @(item.BatDau?.ToString("dd/MM/yyyy")) </td>
+                        <td>@(item.BatDau?.ToString("dd/MM/yyyy")) - @(item.KetThuc?.ToString("dd/MM/yyyy")) </td>
                         <td>
                             @switch (item.TrangThai)
                             {

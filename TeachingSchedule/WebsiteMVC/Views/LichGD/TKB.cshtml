@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "TKB";
     Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+    var isGV = WebsiteMVC.Models.LoginHelper.GetAccount().QuyenHan == "GiangVien";
 }
 
 
@@ -19,13 +20,27 @@
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">Giáo viên</span>
-                    @Html.DropDownList("MaGV", ViewBag.MaGVs as SelectList, "Tất cả", new { @class = "form-control" })
+                    @if (isGV)
+                    {
+                        @Html.DropDownList("MaGV", ViewBag.MaGVs as SelectList, new { @class = "form-control" })
+                    }
+                    else
+                    {
+                        @Html.DropDownList("MaGV", ViewBag.MaGVs as SelectList, "Tất cả", new { @class = "form-control" })
+                    }
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-addon" id="basic-addon1">Bộ môn</span>
-                    @Html.DropDownList("IDBoMon", ViewBag.IDBoMons as SelectList, "Tất cả", new { @class = "form-control" })
+                    @if (isGV)
+                    {
+                        @Html.DropDownList("IDBoMon", ViewBag.IDBoMons as SelectList, new { @class = "form-control" })
+                    }
+                    else
+                    {
+                        @Html.DropDownList("IDBoMon", ViewBag.IDBoMons as SelectList, "Tất cả", new { @class = "form-control" })
+                    }
                 </div>
             </div>
             <div class="col-md-2">

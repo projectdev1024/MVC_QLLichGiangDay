@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebsiteMVC.Models.LopHP>
+
+@{
+    ViewBag.Title = "Export";
+    Layout = "~/Views/Shared/_LayoutAmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    <h2>Vui lòng tích chọn Lớp học để Export.</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <td>Lớp</td>
+                <td>Môn học</td>
+                <td>Quân số</td>
+                <td>LHDT</td>
+                <td>Địa điểm</td>
+                <td>Giáo viên</td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><label><input type="checkbox" name="lst_lopHP" value="@item.MaHP" />@item.MonHoc.TenMonHoc</label></td>
+                    <td>@item.MaHocPhan - @item.TenLop</td>
+                    <td>@item.SiSo</td>
+                    <td>@item.LHDT</td>
+                    <td>@item.DiaDiem</td>
+                    <td>@(item.PCGDs.FirstOrDefault()?.GV.HoTen)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p><button class="btn btn-success"><i class="fa fa-file-excel-o"></i> Xuất file</button></p>
+}

@@ -2500,11 +2500,13 @@
     <Content Include="Views\LichGD\TKB.cshtml" />
     <Content Include="Views\LichGD\TKBPartial.cshtml" />
     <Content Include="Views\LopHP\Import.cshtml" />
+    <Content Include="Views\LopHP\Export.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Upload\img\" />
     <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Base\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

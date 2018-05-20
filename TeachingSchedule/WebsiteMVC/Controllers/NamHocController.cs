@@ -20,12 +20,12 @@ namespace WebsiteMVC.Controllers
         {
             var lst = db.NamHocs.ToList().Where(q => q.Active != false);
             ViewBag.add = lst.Any(q => q.TrangThai != "CLOSED") == false;
-            return View(lst);
+            return View(lst.OrderByDescending(q => q.KetThuc));
         }
 
         public ActionResult Edit(int? id)
         {
-            var obj = db.NamHocs.ToList().FirstOrDefault(q => q.IDNamHoc == (id ?? 0) && q.Active != false);
+            var obj = id > 0 ? db.NamHocs.ToList().FirstOrDefault(q => q.IDNamHoc == (id ?? 0) && q.Active != false) : new NamHoc();
             if (obj != null)
             {
                 obj.KyHoc = obj.KyHoc?.Replace("Kỳ ", "");

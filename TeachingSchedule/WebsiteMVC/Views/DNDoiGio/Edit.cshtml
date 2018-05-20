@@ -8,7 +8,21 @@
 
 
 <div class="panel panel-default">
+    <div class="panel-heading">@ViewBag.Title</div>
     <div class="panel-body">
+        <h2>Đề nghị đổi giờ</h2>
+
+        <ul>
+            <li>Môn học: @Model.LichGD.PCGD.LopHP.MonHoc.TenMonHoc</li>
+            <li>Lớp: @Model.LichGD.PCGD.LopHP.TenLop</li>
+            <li>Mã học phần: @Model.LichGD.PCGD.LopHP.MaHocPhan</li>
+            <li>Giáo viên: @Model.LichGD.PCGD.GV.HoTen</li>
+            <li>Ngày bắt đầu: @Model.LichGD.NgayBD.Value.ToString("dd/MM/yyyy")</li>
+            <li>Ngày kết thúc: @Model.LichGD.NgayKT.Value.ToString("dd/MM/yyyy")</li>
+        </ul>
+
+        <h4>Vui lòng chọn thời gian của giáo viên khác để yêu cầu đổi:</h4>
+
         @using (Html.BeginForm())
         {
             @Html.AntiForgeryToken()
@@ -21,8 +35,7 @@
                 @Html.HiddenFor(model => model.NgayTao)
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.MaLichGD2, "Giáo viên đề nghị", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-12">
                         <table class="table table-bordered table-responsive">
                             <thead>
                                 <tr>
@@ -36,7 +49,7 @@
                                 {
                                     var grbylop = gr.GroupBy(q => q.PCGD.MaHP);
                                     <tr>
-                                        <td rowspan="@(gr.Count() + grbylop.Count() + 2)">@gr.First().PCGD.GV.HoTen</td>
+                                        <td rowspan=" @(gr.Count() + grbylop.Count() + 1)"> @gr.First().PCGD.GV.HoTen</td>
                                         <td colspan="2" style="display: none"></td>
                                     </tr>
                                     foreach (var gr_lop in grbylop)
@@ -52,8 +65,19 @@
                                         {
                                             <tr>
                                                 <td>
-                                                    <label>@Html.RadioButtonFor(q => q.MaLichGD2, item.MaLichGD) Thứ @item.Thu  - tiết @item.Tiet</label>
+                                                    <label>
+                                                        @Html.RadioButtonFor(q => q.MaLichGD2, item.MaLichGD, new { required = "true" })  @if (item.Thu > 0)
+                                                        {
+                                                            <b> Thứ @(item.Thu + 1)</b>
+                                                        }
+                                                        else
+                                                        {
+                                                            <b>Chủ nhật</b>
+                                                        }  - tiết @item.Tiet
+                                                    </label>
+
                                                 </td>
+
                                             </tr>
                                         }
                                     }

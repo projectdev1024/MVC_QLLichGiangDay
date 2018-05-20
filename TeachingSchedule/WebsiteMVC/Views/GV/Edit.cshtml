@@ -1,5 +1,10 @@
 ﻿@model WebsiteMVC.Models.GV
 
+@{
+    var acc = WebsiteMVC.Models.LoginHelper.GetAccount();
+    var IsGv = acc.QuyenHan == "GiangVien";
+}
+
 <div class="panel panel-default">
     <div class="panel-body">
 
@@ -56,14 +61,28 @@
                 <div class="form-group">
                     @Html.Label("Bộ môn", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.DropDownListFor(model => model.MaBoMon, ViewBag.MaBoMons as SelectList, "---------", new { @class = "form-control", required = "true" })
+                        @if (acc.QuyenHan != "Admin")
+                        {
+                            <b>@Model.BoMon.TenBoMon</b>
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(model => model.MaBoMon, ViewBag.MaBoMons as SelectList, "---------", new { @class = "form-control", required = "true" })
+                        }
                     </div>
                 </div>
 
                 <div class="form-group">
                     @Html.Label("Tên đăng nhập", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                        @if (acc.QuyenHan != "Admin")
+                        {
+                            <b>@Model.TenDangNhap</b>
+                        }
+                        else
+                        {
+                            @Html.EditorFor(model => model.TenDangNhap, new { htmlAttributes = new { @class = "form-control", required = "true" } })
+                        }
                     </div>
                 </div>
 
@@ -84,13 +103,34 @@
                 <div class="form-group">
                     @Html.Label("Quyền hạn", htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
-                        <select name="QuyenHan" id="QuyenHan" required class="form-control">
-                            <option value="">------Vui lòng chọn-----</option>
-                            <option value="GiangVien">Giảng viên</option>
-                            <option value="TroLyKhoa">Trợ lý khoa</option>
-                            <option value="CanBoQuanLy">Cán bộ quản lý</option>
-                            <option value="Admin">Admin</option>
-                        </select>
+                        @if (acc.QuyenHan != "Admin")
+                        {
+                            switch (Model.QuyenHan)
+                            {
+                                case "Admin":
+                                    <b>Admin</b>
+                                    break;
+                                case "CanBoQuanLy":
+                                    <b>Cán bộ quản lý</b>
+                                    break;
+                                case "TroLyKhoa":
+                                    <b>Trợ lý khoa</b>
+                                    break;
+                                default:
+                                    <b>Giảng viên</b>
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            <select name="QuyenHan" id="QuyenHan" required class="form-control">
+                                <option value="">------Vui lòng chọn-----</option>
+                                <option value="GiangVien">Giảng viên</option>
+                                <option value="TroLyKhoa">Trợ lý khoa</option>
+                                <option value="CanBoQuanLy">Cán bộ quản lý</option>
+                                <option value="Admin">Admin</option>
+                            </select>
+                        }
                     </div>
                 </div>
 

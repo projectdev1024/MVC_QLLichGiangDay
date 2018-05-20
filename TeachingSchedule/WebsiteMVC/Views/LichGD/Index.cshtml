@@ -71,9 +71,12 @@
                             @Html.DisplayFor(modelItem => item.Tiet)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit","DNDoiGio",new { MaLichGD = item.MaLichGD })" id="sample_editable_1_new" class="btn green">
-                                <i class="fa fa-plus"></i> Đề nghị đổi giờ
-                            </a>
+                            @if (WebsiteMVC.Models.LoginHelper.GetAccount().MaGV == item.PCGD.MaGV)
+                            {
+                                <a href="@Url.Action("Edit","DNDoiGio",new { MaLichGD = item.MaLichGD })" id="sample_editable_1_new" class="btn green">
+                                    <i class="fa fa-plus"></i> Đề nghị đổi giờ
+                                </a>
+                            }
                             @if (per)
                             {
                                 <a href="@Url.Action("Edit",new { id = item.MaLichGD})" class="btn btn-primary"><i class="fa fa-pencil"></i> Sửa</a>

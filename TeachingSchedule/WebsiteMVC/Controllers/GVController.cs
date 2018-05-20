@@ -17,13 +17,17 @@ namespace WebsiteMVC.Controllers
         {
             var lst = new List<GV>();
             var db = new Models.TeachingScheduleEntities();
-            if (Account.QuyenHan == "GiangVien")
+            switch (Account.QuyenHan)
             {
-                lst.Add(Account);
-            }
-            else
-            {
-                lst = db.GVs.ToList().Where(q => q.Active != false).ToList();
+                case "GiangVien":
+                    lst.Add(Account);
+                    break;
+                case "Admin":
+                    lst = db.GVs.ToList().Where(q => q.Active != false).ToList();
+                    break;
+                default:
+                    lst = db.GVs.ToList().Where(q => q.Active != false && q.MaBoMon == Account.MaBoMon).ToList();
+                    break;
             }
             return View(lst);
         }
@@ -46,7 +50,7 @@ namespace WebsiteMVC.Controllers
         public ActionResult Edit(int? id)
         {
             var db = new TeachingScheduleEntities();
-            var ob = new TeachingScheduleEntities().GVs.FirstOrDefault(q => q.MaGV == (id ?? 0));
+            var ob = db.GVs.FirstOrDefault(q => q.MaGV == (id ?? 0));
             if (ob == null) return RedirectToAction("Index");
             ViewBag.MaBoMons = db.BoMons.Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, ob.MaBoMon);
             return View(ob);
@@ -135,8 +139,9 @@ namespace WebsiteMVC.Controllers
         public ActionResult MyProfile()
         {
             var db = new TeachingScheduleEntities();
-            var ob = new TeachingScheduleEntities().GVs.FirstOrDefault(q => q.MaGV == Account.MaGV);
+            var ob = db.GVs.FirstOrDefault(q => q.MaGV == Account.MaGV);
             if (ob == null) return RedirectToAction("Index");
+            ViewBag.MaBoMons = db.BoMons.Where(q => q.Active != false).CreateSelectList(q => q.MaBoMon, q => q.TenBoMon, ob.MaBoMon);
             return View(ob);
         }
     }

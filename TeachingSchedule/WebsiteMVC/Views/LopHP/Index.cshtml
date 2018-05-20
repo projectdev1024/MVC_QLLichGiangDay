@@ -38,18 +38,18 @@
                     </div>
                 </div>
                 <input type="submit" name="submit" value="LỌC" class="btn green" />
-                <button type="submit" name="submit" value="Export" class="btn btn-primary">
-                    Export <i class="fa fa-file-excel-o"></i>
+                <button type="submit" name="submit" value="Export" class="btn btn-warning">
+                    <i class="fa fa-file-excel-o"></i> Export
                 </button>
                 @if (per)
                 {
                     if (ViewBag.edit == true)
                     {
                         <a href="@Url.Action("Edit")" id="sample_editable_1_new" class="btn btn-primary">
-                            Thêm Lớp học phần <i class="fa fa-plus"></i>
+                            <i class="fa fa-pencil"></i> Thêm Lớp
                         </a>
-                        <a href="@Url.Action("Import",new {IDNamHoc = namhoc.SelectedValue })" class="btn btn-primary">
-                            Import Lớp học phần <i class="fa fa-file-archive-o"></i>
+                        <a href="@Url.Action("Import",new {IDNamHoc = namhoc.SelectedValue })" class="btn btn-default">
+                            <i class="fa fa-file-archive-o"></i> Import Lớp
                         </a>
                     }
                     else
@@ -69,6 +69,9 @@
                         Tên môn học
                     </th>
                     <th>
+                        Tên lớp
+                    </th>
+                    <th>
                         Số tiết
                     </th>
                     <th>LHDT</th>
@@ -84,9 +87,6 @@
                     <th>HS ĐĐ</th>
                     <th>Tổng Hệ số</th>
                     <th>ST quy chuẩn</th>
-                    <th>
-                        Tên lớp
-                    </th>
                     <th>
                         Sĩ số
                     </th>
@@ -104,7 +104,7 @@
                 {
                     <tr style="background-color: @(item.PCGDs.Count > 0 ?"#74aed6":"none")">
                         <td>
-                            <span onclick="LoadPCGD('@item.MaHP')" class="btn btn-primary"><i class="fa fa-info"></i> Xem PCGD</span>
+                            <span onclick="LoadPCGD('@item.MaHP')" class="btn btn-info"><i class="fa fa-info"></i> Xem PCGD</span>
                             @if (per && ViewBag.edit == true)
                             {
                                 <a href="@Url.Action("Edit",new { MaHP = item.MaHP})" class="btn btn-primary"><i class="fa fa-pencil"></i> </a>
@@ -113,6 +113,9 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.MonHoc.TenMonHoc)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TenLop)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.SoTietTKB)
@@ -132,9 +135,6 @@
                         <td>@Html.DisplayFor(modelItem => item.HeSoDD)</td>
                         <td>@Html.DisplayFor(modelItem => item.TongHeSo)</td>
                         <td>@Html.DisplayFor(modelItem => item.SoTietQuyChuan)</td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.TenLop)
-                        </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.SiSo)
                         </td>

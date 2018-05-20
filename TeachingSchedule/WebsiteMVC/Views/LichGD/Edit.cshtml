@@ -7,6 +7,7 @@
 
 
 <div class="panel panel-default">
+    <div class="panel-body"> @ViewBag.Title</div>
     <div class="panel-body">
 
         @using (Html.BeginForm())
@@ -19,22 +20,14 @@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.NgayBD, "Ngày bắt đầu", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.TextBoxFor(model => model.NgayBD, new { @class = "form-controls", required = "true", type = "date", Value = Model.NgayBD?.ToString("yyyy-MM-dd") })
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NgayKT, "Ngày kết thúc", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.TextBoxFor(model => model.NgayKT, new { @class = "form-controls", required = "true", type = "date", Value = Model.NgayBD?.ToString("yyyy-MM-dd") })
-                    </div>
-                </div>
 
-                <div class="form-group">
                     @Html.LabelFor(model => model.Thu, "Thứ", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        <select name="Thu" required>
+                    <div class="col-md-4">
+                        <select name="Thu" required class="form-control">
                             <option value="1">Thứ 2</option>
                             <option value="2">Thứ 3</option>
                             <option value="3">Thứ 4</option>
@@ -47,11 +40,17 @@
                             $('[name="thu"]').val(@Model.Thu);
                         </script>
                     </div>
+
                 </div>
 
                 <div class="form-group">
+                    @Html.LabelFor(model => model.NgayKT, "Ngày kết thúc", htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.TextBoxFor(model => model.NgayKT, new { @class = "form-controls", required = "true", type = "date", Value = Model.NgayKT?.ToString("yyyy-MM-dd") })
+                    </div>
+
                     @Html.LabelFor(model => model.Tiet, "Tiết", htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
+                    <div class="col-md-4">
                         @Html.TextBoxFor(model => model.Tiet, new { @class = "form-control", required = "true" })
                     </div>
                 </div>

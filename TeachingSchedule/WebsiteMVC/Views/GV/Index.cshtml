@@ -48,6 +48,9 @@
                     <th>
                         TÊN ĐĂNG NHẬP
                     </th>
+                    <th>
+                        Quyền hạn
+                    </th>
                     <th></th>
                 </tr>
             </thead>
@@ -80,6 +83,23 @@
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.TenDangNhap)
+                        </td>
+                        <td>
+                            @switch (item.QuyenHan)
+                            {
+                                case "Admin":
+                                    <b>Admin</b>
+                                    break;
+                                case "CanBoQuanLy":
+                                    <b>Cán bộ quản lý</b>
+                                    break;
+                                case "TroLyKhoa":
+                                    <b>Trợ lý khoa</b>
+                                    break;
+                                default:
+                                    <b>Giảng viên</b>
+                                    break;
+                            }
                         </td>
                         <td>
                             <a href="@Url.Action("Detail",new { id = item.MaGV})" class="btn btn-primary"><i class="fa fa-info"></i> Chi tiết</a>

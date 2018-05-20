@@ -21,12 +21,12 @@ namespace WebsiteMVC.Controllers
         // GET: AdminCP/LopHP
         public ActionResult Index(int? IDNamHoc, int? IDBoMon, string submit = null)
         {
-            if (submit == "Export") return Export(IDNamHoc);
+            if (submit == "Export") return RedirectToAction("Export", new { IDNamHoc });
 
-            var namhoc = db.NamHocs.Where(q => q.Active != false).OrderBy(q => q.TrangThai).ToList();
+            var namhoc = db.NamHocs.Where(q => q.Active != false).OrderByDescending(q => q.KetThuc).ToList();
             if (IDNamHoc.HasValue == false)
             {
-                IDNamHoc = namhoc.Last().IDNamHoc;
+                IDNamHoc = namhoc.FirstOrDefault()?.IDNamHoc;
             }
 
             ViewBag.NamHocs = namhoc.CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, IDNamHoc);
@@ -52,8 +52,15 @@ namespace WebsiteMVC.Controllers
 
         public ActionResult Export(int? IDNamHoc)
         {
+            return View(db.LopHPs.Where(q => q.Active != false && q.IDNamHoc == IDNamHoc).OrderBy(q => q.MonHoc.TenMonHoc));
+        }
+
+        [HttpPost]
+        public ActionResult Export(int? IDNamHoc, int[] lst_lopHP)
+        {
             var namhoc = db.NamHocs.Find(IDNamHoc);
-            var lst = db.LopHPs.Where(q => q.IDNamHoc == IDNamHoc).ToList();
+            var lst = db.LopHPs.Where(q => q.IDNamHoc == IDNamHoc && lst_lopHP.Any(a => a == q.MaHP)).ToList();
+
             var wb = new XLWorkbook(Server.MapPath("/Content/Excels/lophp.xlsx"));
             string nameFile = string.Format("GD {0}.xlsx", namhoc.mNamHoc);
             var ws = wb.Worksheets.Worksheet(1);
@@ -63,6 +70,7 @@ namespace WebsiteMVC.Controllers
                 var item = lst[i];
                 ws.Cell(2 + i, 1).Value = namhoc.KyHoc;
                 ws.Cell(2 + i, 2).Value = item.MonHoc.TenMonHoc;
+                ws.Cell(2 + i, 3).Value = item.MonHoc.M;
                 ws.Cell(2 + i, 4).Value = item.SoTietTKB;
                 ws.Cell(2 + i, 5).Value = item.LHDT;
                 ws.Cell(2 + i, 6).Value = item.Kip;
@@ -77,8 +85,8 @@ namespace WebsiteMVC.Controllers
                 ws.Cell(2 + i, 15).Value = item.SiSo;
                 ws.Cell(2 + i, 16).Value = item.TGTHIKT;
                 ws.Cell(2 + i, 17).Value = item.HinhThucThi;
-                ws.Cell(2 + i, 18).Value = item.PCGDs?.First().MaGV;
-                ws.Cell(2 + i, 19).Value = item.PCGDs?.First().GV.HoTen;
+                ws.Cell(2 + i, 18).Value = item.PCGDs?.FirstOrDefault()?.MaGV;
+                ws.Cell(2 + i, 19).Value = item.PCGDs?.FirstOrDefault()?.GV.HoTen;
             }
 
             using (var stream = new MemoryStream())
@@ -95,8 +103,14 @@ namespace WebsiteMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Import(int? IDNamHoc, HttpPostedFileBase excel, int sheet = 1)
+        public ActionResult Import(int? IDNamHoc, HttpPostedFileBase excel, string LHDT, int sheet = 1)
         {
+            if (Path.GetExtension(excel.FileName) != ".xlsx")
+            {
+                ViewBag.IDNamHocs = db.NamHocs.Where(q => q.Active != false).CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, IDNamHoc);
+                ModelState.AddModelError("", "Vui lòng chọn tệp tin định dạng .xlsx");
+                return View();
+            }
             var workbook = new ClosedXML.Excel.XLWorkbook(excel.InputStream);
             var ws = workbook.Worksheet(sheet);
             var lst = (from row in ws.Rows(2, ws.RowsUsed().Count())
@@ -105,34 +119,8 @@ namespace WebsiteMVC.Controllers
             {
                 if (q != null)
                 {
-                    q.HeSoKip = q.Kip == "N" ? 0 : 0.5;
-                    q.HeSoDD = q.DiaDiem == "HN" ? 0 : 0.5;
-                    switch (q.LHDT)
-                    {
-                        case "DH":
-                            q.HeSoLHDT = 0;
-                            break;
-                        case "CH":
-                            q.HeSoLHDT = 0.6;
-                            break;
-                        case "LT":
-                            q.HeSoLHDT = 0.2;
-                            break;
-                        case "CD":
-                            q.HeSoLHDT = 0;
-                            break;
-                        case "AT":
-                            q.HeSoLHDT = 0.2;
-                            break;
-                        default:
-                            q.HeSoLHDT = 0;
-                            break;
-                    }
-                    if (q.SiSo <= 50) q.HeSoQS = 0;
-                    else if (q.SiSo > 100) q.HeSoQS = 0.6;
-                    else q.HeSoQS = Math.Ceiling(((q.SiSo ?? 0) - 50) / 10.0) * 0.1;
-                    q.TongHeSo = q.HeSoDD + q.HeSoKip + q.HeSoLHDT + q.HeSoQS + 1;
-                    q.SoTietQuyChuan = (int?)(q.TongHeSo * q.SoTietTKB);
+                    q.LHDT = LHDT;
+                    _fillHeSo(q);
                     db.LopHPs.Add(q);
                 }
             });
@@ -169,6 +157,8 @@ namespace WebsiteMVC.Controllers
             else if (q.SiSo > 100) q.HeSoQS = 0.6;
             else q.HeSoQS = Math.Ceiling(((q.SiSo ?? 0) - 50) / 10.0) * 0.1;
             q.TongHeSo = q.HeSoDD + q.HeSoKip + q.HeSoLHDT + q.HeSoQS + 1;
+
+            if (q.MonHoc == null) q.MonHoc = db.MonHocs.Find(q.MaMH);
             switch (q.MonHoc.M)
             {
                 case "A":
@@ -231,14 +221,13 @@ namespace WebsiteMVC.Controllers
 
             var MaBoMon = LoginHelper.GetAccount().MaBoMon;
             ViewBag.MaMH = db.MonHocs.Where(q => q.MaBoMon == MaBoMon).CreateSelectList(q => q.MaMH, q => q.TenMonHoc, lopHP.MaMH);
-            ViewBag.IDNamHocs = db.NamHocs.Where(q => q.Active != false).CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, lopHP.IDNamHoc);
+            ViewBag.IDNamHocs = db.NamHocs.Where(q => q.Active != false && (q.TrangThai == "INIT" || q.TrangThai == "RUNNING")).CreateSelectList(q => q.IDNamHoc, q => q.mNamHoc, lopHP.IDNamHoc);
             return View(lopHP);
         }
 
         [HttpPost]
         public ActionResult Edit(LopHP lopHP)
         {
-            lopHP.MonHoc = db.MonHocs.Find(lopHP.MaMH);
             _fillHeSo(lopHP);
             if (lopHP.MaHP > 0)
             {
