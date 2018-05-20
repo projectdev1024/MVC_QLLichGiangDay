@@ -1,0 +1,484 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TeachingScheduleModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TeachingScheduleEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BoMons" EntityType="TeachingScheduleModel.BoMon" />
+    <EntitySet Name="ChucVus" EntityType="TeachingScheduleModel.ChucVu" />
+    <EntitySet Name="CT_DMG" EntityType="TeachingScheduleModel.CT_DMG" />
+    <EntitySet Name="DMGs" EntityType="TeachingScheduleModel.DMG" />
+    <EntitySet Name="DNDoiGios" EntityType="TeachingScheduleModel.DNDoiGio" />
+    <EntitySet Name="DNDoiGVs" EntityType="TeachingScheduleModel.DNDoiGV" />
+    <EntitySet Name="GVs" EntityType="TeachingScheduleModel.GV" />
+    <EntitySet Name="HocHams" EntityType="TeachingScheduleModel.HocHam" />
+    <EntitySet Name="LichGDs" EntityType="TeachingScheduleModel.LichGD" />
+    <EntitySet Name="LopHPs" EntityType="TeachingScheduleModel.LopHP" />
+    <EntitySet Name="MonHocs" EntityType="TeachingScheduleModel.MonHoc" />
+    <EntitySet Name="NamHocs" EntityType="TeachingScheduleModel.NamHoc" />
+    <EntitySet Name="NCKHs" EntityType="TeachingScheduleModel.NCKH" />
+    <EntitySet Name="PCGDs" EntityType="TeachingScheduleModel.PCGD" />
+    <EntitySet Name="sysdiagrams" EntityType="TeachingScheduleModel.sysdiagram" />
+    <AssociationSet Name="FK_GV_BoMon" Association="TeachingScheduleModel.FK_GV_BoMon">
+      <End Role="BoMon" EntitySet="BoMons" />
+      <End Role="GV" EntitySet="GVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MonHoc_BoMon" Association="TeachingScheduleModel.FK_MonHoc_BoMon">
+      <End Role="BoMon" EntitySet="BoMons" />
+      <End Role="MonHoc" EntitySet="MonHocs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_DMG_ChucVu" Association="TeachingScheduleModel.FK_CT_DMG_ChucVu">
+      <End Role="ChucVu" EntitySet="ChucVus" />
+      <End Role="CT_DMG" EntitySet="CT_DMG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_DMG_DMG" Association="TeachingScheduleModel.FK_CT_DMG_DMG">
+      <End Role="DMG" EntitySet="DMGs" />
+      <End Role="CT_DMG" EntitySet="CT_DMG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DMG_GV" Association="TeachingScheduleModel.FK_DMG_GV">
+      <End Role="GV" EntitySet="GVs" />
+      <End Role="DMG" EntitySet="DMGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DMG_HocHam" Association="TeachingScheduleModel.FK_DMG_HocHam">
+      <End Role="HocHam" EntitySet="HocHams" />
+      <End Role="DMG" EntitySet="DMGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DMG_NamHoc" Association="TeachingScheduleModel.FK_DMG_NamHoc">
+      <End Role="NamHoc" EntitySet="NamHocs" />
+      <End Role="DMG" EntitySet="DMGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DNDoiGio_LichGD1" Association="TeachingScheduleModel.FK_DNDoiGio_LichGD1">
+      <End Role="LichGD" EntitySet="LichGDs" />
+      <End Role="DNDoiGio" EntitySet="DNDoiGios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DNDoiGV_GV" Association="TeachingScheduleModel.FK_DNDoiGV_GV">
+      <End Role="GV" EntitySet="GVs" />
+      <End Role="DNDoiGV" EntitySet="DNDoiGVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DNDoiGV_PCGD" Association="TeachingScheduleModel.FK_DNDoiGV_PCGD">
+      <End Role="PCGD" EntitySet="PCGDs" />
+      <End Role="DNDoiGV" EntitySet="DNDoiGVs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NCKH_GV" Association="TeachingScheduleModel.FK_NCKH_GV">
+      <End Role="GV" EntitySet="GVs" />
+      <End Role="NCKH" EntitySet="NCKHs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PCGD_GV" Association="TeachingScheduleModel.FK_PCGD_GV">
+      <End Role="GV" EntitySet="GVs" />
+      <End Role="PCGD" EntitySet="PCGDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LichGD_PCGD" Association="TeachingScheduleModel.FK_LichGD_PCGD">
+      <End Role="PCGD" EntitySet="PCGDs" />
+      <End Role="LichGD" EntitySet="LichGDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LopHP_MonHoc" Association="TeachingScheduleModel.FK_LopHP_MonHoc">
+      <End Role="MonHoc" EntitySet="MonHocs" />
+      <End Role="LopHP" EntitySet="LopHPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LopHP_NamHoc" Association="TeachingScheduleModel.FK_LopHP_NamHoc">
+      <End Role="NamHoc" EntitySet="NamHocs" />
+      <End Role="LopHP" EntitySet="LopHPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PCGD_LopHP" Association="TeachingScheduleModel.FK_PCGD_LopHP">
+      <End Role="LopHP" EntitySet="LopHPs" />
+      <End Role="PCGD" EntitySet="PCGDs" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="BoMon">
+    <Key>
+      <PropertyRef Name="MaBoMon" />
+    </Key>
+    <Property Name="MaBoMon" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBoMon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="GVs" Relationship="TeachingScheduleModel.FK_GV_BoMon" FromRole="BoMon" ToRole="GV" />
+    <NavigationProperty Name="MonHocs" Relationship="TeachingScheduleModel.FK_MonHoc_BoMon" FromRole="BoMon" ToRole="MonHoc" />
+  </EntityType>
+  <EntityType Name="ChucVu">
+    <Key>
+      <PropertyRef Name="MaCV" />
+    </Key>
+    <Property Name="MaCV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="HeSo" Type="Int32" />
+    <NavigationProperty Name="CT_DMG" Relationship="TeachingScheduleModel.FK_CT_DMG_ChucVu" FromRole="ChucVu" ToRole="CT_DMG" />
+  </EntityType>
+  <EntityType Name="CT_DMG">
+    <Key>
+      <PropertyRef Name="IDCT_DMG" />
+    </Key>
+    <Property Name="IDCT_DMG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaDMG" Type="Int32" />
+    <Property Name="MaCV" Type="Int32" />
+    <NavigationProperty Name="ChucVu" Relationship="TeachingScheduleModel.FK_CT_DMG_ChucVu" FromRole="CT_DMG" ToRole="ChucVu" />
+    <NavigationProperty Name="DMG" Relationship="TeachingScheduleModel.FK_CT_DMG_DMG" FromRole="CT_DMG" ToRole="DMG" />
+  </EntityType>
+  <EntityType Name="DMG">
+    <Key>
+      <PropertyRef Name="MaDMG" />
+    </Key>
+    <Property Name="MaDMG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaGV" Type="Int32" />
+    <Property Name="IDNamHoc" Type="Int32" />
+    <Property Name="TongHeSo" Type="Int32" />
+    <Property Name="MaHocHam" Type="Int32" />
+    <Property Name="TongDMG" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <NavigationProperty Name="CT_DMG" Relationship="TeachingScheduleModel.FK_CT_DMG_DMG" FromRole="DMG" ToRole="CT_DMG" />
+    <NavigationProperty Name="GV" Relationship="TeachingScheduleModel.FK_DMG_GV" FromRole="DMG" ToRole="GV" />
+    <NavigationProperty Name="HocHam" Relationship="TeachingScheduleModel.FK_DMG_HocHam" FromRole="DMG" ToRole="HocHam" />
+    <NavigationProperty Name="NamHoc" Relationship="TeachingScheduleModel.FK_DMG_NamHoc" FromRole="DMG" ToRole="NamHoc" />
+  </EntityType>
+  <EntityType Name="DNDoiGio">
+    <Key>
+      <PropertyRef Name="MaDN" />
+    </Key>
+    <Property Name="MaDN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaLichGD" Type="Int32" />
+    <Property Name="MaLichGD2" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LichGD" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD1" FromRole="DNDoiGio" ToRole="LichGD" />
+  </EntityType>
+  <EntityType Name="DNDoiGV">
+    <Key>
+      <PropertyRef Name="MaDN" />
+    </Key>
+    <Property Name="MaDN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaPCGD" Type="Int32" />
+    <Property Name="NgayTao" Type="DateTime" Precision="3" />
+    <Property Name="MaGV" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NgayBD" Type="DateTime" Precision="0" />
+    <Property Name="NgayKT" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="GV" Relationship="TeachingScheduleModel.FK_DNDoiGV_GV" FromRole="DNDoiGV" ToRole="GV" />
+    <NavigationProperty Name="PCGD" Relationship="TeachingScheduleModel.FK_DNDoiGV_PCGD" FromRole="DNDoiGV" ToRole="PCGD" />
+  </EntityType>
+  <EntityType Name="GV">
+    <Key>
+      <PropertyRef Name="MaGV" />
+    </Key>
+    <Property Name="MaGV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="GioiTinh" Type="Boolean" />
+    <Property Name="Avatar" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MatKhau" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QuyenHan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="MaBoMon" Type="Int32" />
+    <NavigationProperty Name="BoMon" Relationship="TeachingScheduleModel.FK_GV_BoMon" FromRole="GV" ToRole="BoMon" />
+    <NavigationProperty Name="DMGs" Relationship="TeachingScheduleModel.FK_DMG_GV" FromRole="GV" ToRole="DMG" />
+    <NavigationProperty Name="DNDoiGVs" Relationship="TeachingScheduleModel.FK_DNDoiGV_GV" FromRole="GV" ToRole="DNDoiGV" />
+    <NavigationProperty Name="NCKHs" Relationship="TeachingScheduleModel.FK_NCKH_GV" FromRole="GV" ToRole="NCKH" />
+    <NavigationProperty Name="PCGDs" Relationship="TeachingScheduleModel.FK_PCGD_GV" FromRole="GV" ToRole="PCGD" />
+  </EntityType>
+  <EntityType Name="HocHam">
+    <Key>
+      <PropertyRef Name="MaHocHam" />
+    </Key>
+    <Property Name="MaHocHam" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenHocHam" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="HeSo" Type="Double" />
+    <Property Name="DMG" Type="Int32" />
+    <NavigationProperty Name="DMGs" Relationship="TeachingScheduleModel.FK_DMG_HocHam" FromRole="HocHam" ToRole="DMG" />
+  </EntityType>
+  <EntityType Name="LichGD">
+    <Key>
+      <PropertyRef Name="MaLichGD" />
+    </Key>
+    <Property Name="MaLichGD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaPCGD" Type="Int32" />
+    <Property Name="NgayBD" Type="DateTime" Precision="3" />
+    <Property Name="NgayKT" Type="DateTime" Precision="3" />
+    <Property Name="Thu" Type="Int32" />
+    <Property Name="Tiet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DNDoiGios" Relationship="TeachingScheduleModel.FK_DNDoiGio_LichGD1" FromRole="LichGD" ToRole="DNDoiGio" />
+    <NavigationProperty Name="PCGD" Relationship="TeachingScheduleModel.FK_LichGD_PCGD" FromRole="LichGD" ToRole="PCGD" />
+  </EntityType>
+  <EntityType Name="LopHP">
+    <Key>
+      <PropertyRef Name="MaHP" />
+    </Key>
+    <Property Name="MaHP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDNamHoc" Type="Int32" />
+    <Property Name="SiSo" Type="Int32" />
+    <Property Name="LHDT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DiaDiem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Kip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoTietTKB" Type="Int32" />
+    <Property Name="TenLop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TGTHIKT" Type="DateTime" Precision="0" />
+    <Property Name="HinhThucThi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaMH" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="HeSoKip" Type="Double" />
+    <Property Name="HeSoLHDT" Type="Double" />
+    <Property Name="HeSoQS" Type="Double" />
+    <Property Name="HeSoDD" Type="Double" />
+    <Property Name="TongHeSo" Type="Double" />
+    <Property Name="SoTietQuyChuan" Type="Int32" />
+    <Property Name="MaHocPhan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="MonHoc" Relationship="TeachingScheduleModel.FK_LopHP_MonHoc" FromRole="LopHP" ToRole="MonHoc" />
+    <NavigationProperty Name="NamHoc" Relationship="TeachingScheduleModel.FK_LopHP_NamHoc" FromRole="LopHP" ToRole="NamHoc" />
+    <NavigationProperty Name="PCGDs" Relationship="TeachingScheduleModel.FK_PCGD_LopHP" FromRole="LopHP" ToRole="PCGD" />
+  </EntityType>
+  <EntityType Name="MonHoc">
+    <Key>
+      <PropertyRef Name="MaMH" />
+    </Key>
+    <Property Name="MaMH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenMonHoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaBoMon" Type="Int32" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="M" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BoMon" Relationship="TeachingScheduleModel.FK_MonHoc_BoMon" FromRole="MonHoc" ToRole="BoMon" />
+    <NavigationProperty Name="LopHPs" Relationship="TeachingScheduleModel.FK_LopHP_MonHoc" FromRole="MonHoc" ToRole="LopHP" />
+  </EntityType>
+  <EntityType Name="NamHoc">
+    <Key>
+      <PropertyRef Name="IDNamHoc" />
+    </Key>
+    <Property Name="IDNamHoc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="KyHoc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NamHoc1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" />
+    <Property Name="BatDau" Type="DateTime" Precision="0" />
+    <Property Name="KetThuc" Type="DateTime" Precision="0" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DMGs" Relationship="TeachingScheduleModel.FK_DMG_NamHoc" FromRole="NamHoc" ToRole="DMG" />
+    <NavigationProperty Name="LopHPs" Relationship="TeachingScheduleModel.FK_LopHP_NamHoc" FromRole="NamHoc" ToRole="LopHP" />
+  </EntityType>
+  <EntityType Name="NCKH">
+    <Key>
+      <PropertyRef Name="MaNCKH" />
+    </Key>
+    <Property Name="MaNCKH" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaGV" Type="Int32" />
+    <Property Name="HangMuc" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TaiLieu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoGioNC" Type="Int32" />
+    <NavigationProperty Name="GV" Relationship="TeachingScheduleModel.FK_NCKH_GV" FromRole="NCKH" ToRole="GV" />
+  </EntityType>
+  <EntityType Name="PCGD">
+    <Key>
+      <PropertyRef Name="MaPCGD" />
+    </Key>
+    <Property Name="MaPCGD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MaGV" Type="Int32" />
+    <Property Name="MaHP" Type="Int32" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaGV2" Type="Int32" />
+    <Property Name="MaGV3" Type="Int32" />
+    <NavigationProperty Name="DNDoiGVs" Relationship="TeachingScheduleModel.FK_DNDoiGV_PCGD" FromRole="PCGD" ToRole="DNDoiGV" />
+    <NavigationProperty Name="GV" Relationship="TeachingScheduleModel.FK_PCGD_GV" FromRole="PCGD" ToRole="GV" />
+    <NavigationProperty Name="LichGDs" Relationship="TeachingScheduleModel.FK_LichGD_PCGD" FromRole="PCGD" ToRole="LichGD" />
+    <NavigationProperty Name="LopHP" Relationship="TeachingScheduleModel.FK_PCGD_LopHP" FromRole="PCGD" ToRole="LopHP" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_GV_BoMon">
+    <End Type="TeachingScheduleModel.BoMon" Role="BoMon" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.GV" Role="GV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoMon">
+        <PropertyRef Name="MaBoMon" />
+      </Principal>
+      <Dependent Role="GV">
+        <PropertyRef Name="MaBoMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MonHoc_BoMon">
+    <End Type="TeachingScheduleModel.BoMon" Role="BoMon" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.MonHoc" Role="MonHoc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BoMon">
+        <PropertyRef Name="MaBoMon" />
+      </Principal>
+      <Dependent Role="MonHoc">
+        <PropertyRef Name="MaBoMon" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_DMG_ChucVu">
+    <End Type="TeachingScheduleModel.ChucVu" Role="ChucVu" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.CT_DMG" Role="CT_DMG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVu">
+        <PropertyRef Name="MaCV" />
+      </Principal>
+      <Dependent Role="CT_DMG">
+        <PropertyRef Name="MaCV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_DMG_DMG">
+    <End Type="TeachingScheduleModel.DMG" Role="DMG" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.CT_DMG" Role="CT_DMG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DMG">
+        <PropertyRef Name="MaDMG" />
+      </Principal>
+      <Dependent Role="CT_DMG">
+        <PropertyRef Name="MaDMG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DMG_GV">
+    <End Type="TeachingScheduleModel.GV" Role="GV" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.DMG" Role="DMG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GV">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="DMG">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DMG_HocHam">
+    <End Type="TeachingScheduleModel.HocHam" Role="HocHam" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.DMG" Role="DMG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HocHam">
+        <PropertyRef Name="MaHocHam" />
+      </Principal>
+      <Dependent Role="DMG">
+        <PropertyRef Name="MaHocHam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DMG_NamHoc">
+    <End Type="TeachingScheduleModel.NamHoc" Role="NamHoc" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.DMG" Role="DMG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NamHoc">
+        <PropertyRef Name="IDNamHoc" />
+      </Principal>
+      <Dependent Role="DMG">
+        <PropertyRef Name="IDNamHoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DNDoiGio_LichGD1">
+    <End Type="TeachingScheduleModel.LichGD" Role="LichGD" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.DNDoiGio" Role="DNDoiGio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LichGD">
+        <PropertyRef Name="MaLichGD" />
+      </Principal>
+      <Dependent Role="DNDoiGio">
+        <PropertyRef Name="MaLichGD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DNDoiGV_GV">
+    <End Type="TeachingScheduleModel.GV" Role="GV" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.DNDoiGV" Role="DNDoiGV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GV">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="DNDoiGV">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DNDoiGV_PCGD">
+    <End Type="TeachingScheduleModel.PCGD" Role="PCGD" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.DNDoiGV" Role="DNDoiGV" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PCGD">
+        <PropertyRef Name="MaPCGD" />
+      </Principal>
+      <Dependent Role="DNDoiGV">
+        <PropertyRef Name="MaPCGD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NCKH_GV">
+    <End Type="TeachingScheduleModel.GV" Role="GV" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.NCKH" Role="NCKH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GV">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="NCKH">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PCGD_GV">
+    <End Type="TeachingScheduleModel.GV" Role="GV" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.PCGD" Role="PCGD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GV">
+        <PropertyRef Name="MaGV" />
+      </Principal>
+      <Dependent Role="PCGD">
+        <PropertyRef Name="MaGV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LichGD_PCGD">
+    <End Type="TeachingScheduleModel.PCGD" Role="PCGD" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.LichGD" Role="LichGD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PCGD">
+        <PropertyRef Name="MaPCGD" />
+      </Principal>
+      <Dependent Role="LichGD">
+        <PropertyRef Name="MaPCGD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LopHP_MonHoc">
+    <End Type="TeachingScheduleModel.MonHoc" Role="MonHoc" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.LopHP" Role="LopHP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MonHoc">
+        <PropertyRef Name="MaMH" />
+      </Principal>
+      <Dependent Role="LopHP">
+        <PropertyRef Name="MaMH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LopHP_NamHoc">
+    <End Type="TeachingScheduleModel.NamHoc" Role="NamHoc" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.LopHP" Role="LopHP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NamHoc">
+        <PropertyRef Name="IDNamHoc" />
+      </Principal>
+      <Dependent Role="LopHP">
+        <PropertyRef Name="IDNamHoc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PCGD_LopHP">
+    <End Type="TeachingScheduleModel.LopHP" Role="LopHP" Multiplicity="0..1" />
+    <End Type="TeachingScheduleModel.PCGD" Role="PCGD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LopHP">
+        <PropertyRef Name="MaHP" />
+      </Principal>
+      <Dependent Role="PCGD">
+        <PropertyRef Name="MaHP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
